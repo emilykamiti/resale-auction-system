@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+
+  resale:
+    image: mysql:latest
+    restart: always
+    container_name: resale
+    environment:
+      MYSQL_DATABASE: 'resale'
+      MYSQL_USER: 'resale'
+      MYSQL_PASSWORD: 'resale'
+      MYSQL_ROOT_PASSWORD: 'resale'
+    ports:
+      - '3309:3306'
+    expose:
+      - '3306'
+      - '3309'
+    volumes:
+      - resale-db:/var/lib/mysql
+
+
+volumes:
+  resale-db:
+ 
+  
