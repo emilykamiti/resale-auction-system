@@ -10,21 +10,20 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet("/home")
+@WebServlet(urlPatterns = "/home")
 public class HomeAction extends BaseAction {
 
     private ItemBeanI itemBean = new ItemBean();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession httpSession = req.getSession();
+        String addItemLink = "<br/><a href=\"" + req.getContextPath() + "/add-item.jsp\">Add Item</a>";
 
         new AppPage().renderHtml(req, resp, 0,
-                HtmlTable.form(Item.class) + itemBean.showItems());
+                HtmlTable.form(Item.class) + addItemLink + itemBean.showItems());
 
     }
 

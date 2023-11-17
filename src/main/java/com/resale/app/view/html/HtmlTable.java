@@ -65,9 +65,7 @@ public class HtmlTable implements Serializable {
         if (resaleHtmlForm == null)
             return StringUtils.EMPTY;
 
-        String htmlForm = "<h2>" + resaleHtmlForm.label() + "</h2>" +
-                "<br/>Add " + resaleHtmlForm.label() + "<br/><form action=\"" + resaleHtmlForm.url()
-                + "\" method=\"" + resaleHtmlForm.httpMethod() + "\">";
+        String htmlForm = "<h2></h2>";
 
         Field[] fields = model.getDeclaredFields();
 
@@ -87,9 +85,6 @@ public class HtmlTable implements Serializable {
                     + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id()) + "\" name=\""
                     + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\" ><br>";
         }
-
-        htmlForm += "<input type=\"submit\" value=\"Submit\">";
-        htmlForm += "</form><br/>";
 
         return htmlForm;
     }

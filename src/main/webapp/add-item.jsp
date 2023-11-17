@@ -87,7 +87,6 @@
             </div>
         </div>
         <br/>
-        <!-- Display items -->
        
     </div>
 </body>

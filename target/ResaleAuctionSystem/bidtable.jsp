@@ -7,7 +7,6 @@
 
 <head>
     <title>Bid Table</title>
-    <!-- Add your CSS styles if needed -->
     <style>
         table {
             width: 100%;

@@ -12,6 +12,6 @@ public class LogOutAction extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();
-        resp.sendRedirect("./login.html");
+        resp.sendRedirect("./login.jsp");
     }
 }

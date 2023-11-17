@@ -11,10 +11,9 @@ com/resale/action/ShowBid.class
 com/resale/app/bean/ItemBean.class
 com/resale/app/model/entity/Item.class
 com/resale/app/view/navigationbar/BottomNavigationBar.class
-com/resale/auth/Login.class
-com/resale/auth/LogOut.class
 com/resale/app/view/html/ResaleTableColHeader.class
 com/resale/app/view/navigationbar/TopNavigationBar.class
+com/resale/action/LandingAction.class
 com/filter/AuthFilter.class
 com/resale/action/LoginAction.class
 com/resale/event/AppInit.class

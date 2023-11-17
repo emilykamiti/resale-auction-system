@@ -24,7 +24,7 @@ public class LoginAction extends BaseAction {
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedInId"))) {
             resp.sendRedirect("./home");
         } else {
-            resp.sendRedirect("./login.html");
+            resp.sendRedirect("./login.jsp");
         }
     }
 

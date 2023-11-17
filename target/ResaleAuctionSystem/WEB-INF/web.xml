@@ -9,4 +9,13 @@
     <param-value> Auction system </param-value>
   </context-param>
 
+  <servlet>
+    <servlet-name>LandingAction</servlet-name>
+    <servlet-class>com.resale.action.LandingAction</servlet-class>
+  </servlet>
+
+    <servlet-mapping>
+    <servlet-name>LandingAction</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 </web-app>
