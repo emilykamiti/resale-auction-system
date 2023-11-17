@@ -12,11 +12,10 @@ public class TopNavigationBar implements Menu, Serializable {
     private final List<MenuLink> links = new ArrayList<>();
 
     {
-        links.add(new MenuLink("./home", "Home", MenuLinkStatus.ACTIVE));
         links.add(new MenuLink("./track", "Track", MenuLinkStatus.NOT_ACTIVE));
         links.add(new MenuLink("./payment", "Payment", MenuLinkStatus.NOT_ACTIVE));
         links.add(new MenuLink("./logout", "Logout", MenuLinkStatus.ACTIVE));
-        links.add(new MenuLink("./login.html", "Login", MenuLinkStatus.ACTIVE));
+        links.add(new MenuLink("./login", "Login", MenuLinkStatus.ACTIVE));
         links.add(new MenuLink("./showbid", "Bids", MenuLinkStatus.ACTIVE));
     }
 

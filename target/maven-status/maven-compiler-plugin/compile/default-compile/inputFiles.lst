@@ -3,7 +3,7 @@
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/app/view/html/MenuLink.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/app/bean/UserBeanI.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/action/ItemAction.java
-/home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/auth/LogOut.java
+/home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/action/LandingAction.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/database/Database.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/action/LoginAction.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/app/model/entity/User.java
@@ -12,7 +12,6 @@
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/app/model/entity/Item.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/app/view/css/AppCss.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/action/HomeAction.java
-/home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/auth/Login.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/app/view/html/MenuLinkStatus.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/app/view/html/ResaleHtmlForm.java
 /home/emily/myworkspace/resale-auction-system/src/main/java/com/resale/app/bean/BidBeanI.java

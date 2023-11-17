@@ -37,11 +37,9 @@ public class AppPage implements Serializable {
                 new AppCss().getStyle() +
             "</head>" +
 
-            "<body>" +
+            "<body>" 
             
-
-            new TopNavigationBar().menu(activeMenu) + "<h3>" +
-            "</h3><br/>");
+            );
 
         print.write(content);
         print.write("<a href=\"./logout\">Logout</a> | <a href=\"./useraction\">Register</a>"+
