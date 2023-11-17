@@ -87,7 +87,7 @@
                         <h1 class="heading">eSales Auctioning</h1>
                         <p class="paragraph">Own Your Price!</p>
                         <p class="paragraph">Your just one Bid away!</p>
-                        <a href="<%= request.getContextPath() %>/home" class="button">Click  to proceed</a>
+                        <a href="<%= request.getContextPath() %>/home" class="button">Click to proceed</a>
                     </div>
 
         </html>
