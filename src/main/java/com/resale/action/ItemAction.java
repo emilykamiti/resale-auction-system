@@ -11,21 +11,14 @@ import com.resale.app.bean.ItemBean;
 import com.resale.app.bean.ItemBeanI;
 import com.resale.app.model.entity.Item;
 
-@WebServlet("/itemaction")
+@WebServlet("/items")
 public class ItemAction extends BaseAction {
 
     private ItemBeanI itemBean = new ItemBean();
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            Item item = new Item(null, null, 0, null);
-            serializeForm(item, req.getParameterMap());
-            itemBean.addOrUpdateItem(item);
+        itemBean.addOrUpdateAccount(serializeForm(Item.class, req.getParameterMap()));
 
-            resp.sendRedirect(req.getContextPath() + "/home");
-        } catch (Exception e) {
-            e.printStackTrace();
-            req.setAttribute("errorMessage", "An error occurred. Please try again.");
-        }
+        resp.sendRedirect("./items");
     }
 }

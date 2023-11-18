@@ -1,27 +1,22 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="com.resale.app.view.css.AppCss" %>
-<%@ page import="com.resale.app.view.navigationbar.TopNavigationBar" %>
-
+<%@ page isELIgnored="false" %>
+<%@ page import="com.resale.app.view.helper.HtmlMenuToolbar" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset='UTF-8'>
-    <title>Items Page</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
-    <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
-    <%= new AppCss().getStyle() %>
-</head>
+    <head>
+        <jsp:include page="../style/style.jsp">
+            <jsp:param name="pageColor" value="red" />
+        </jsp:include>
+    </head>
 
-<body>
-    <%= new TopNavigationBar().menu(activeMenu) %>
-    <h3></h3><br/>
+    <body>
+        <jsp:useBean id="htmlMenuToolBar" class="com.resale.app.view.helper.HtmlMenuToolbar" />
+        <jsp:setProperty name="htmlMenuToolBar" property="activeLink" value='${requestScope.activeMenu}' />
+        ${htmlMenuToolBar.menu}
 
-    <%= content %>
-
-    <a href="<%= request.getContextPath() %>/logout">Logout</a> | <a href="<%= request.getContextPath() %>/register">Register</a>
-</body>
-
+        <h3> ${initParam.AppName} | User: ${sessionScope.username} </h3><br/>
+        ${requestScope.content}
+    </body>
+    
 </html>

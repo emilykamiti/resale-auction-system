@@ -29,7 +29,7 @@ public class BidAction extends BaseAction {
             throws ServletException, IOException {
         Bid newBid = new Bid(0, null, null, null, 0);
 
-        serializeForm(newBid, request.getParameterMap());
+        //serializeForm(newBid, request.getParameterMap());
 
         try {
 

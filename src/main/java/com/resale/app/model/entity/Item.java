@@ -1,22 +1,32 @@
 package com.resale.app.model.entity;
 
 import java.io.Serializable;
-import com.resale.app.view.html.ResaleHtmlForm;
-import com.resale.app.view.html.ResaleTableColHeader;
 
-@ResaleHtmlForm(label = "Item", url = "./item")
+import com.resale.app.view.helper.HtmlForm;
+import com.resale.app.view.helper.HtmlTable;
+import com.resale.app.view.helper.HtmlTableColHeader;
+import com.resale.database.helper.DbColumn;
+
+
+
+@HtmlTable(addUrl = "./items?action=add")
+@HtmlForm(label = "Item", url = "./item")
 public class Item implements Serializable {
 
-    @ResaleTableColHeader(header = "Name")
+ @DbColumn(columnName = "name")
+    @HtmlTableColHeader(header = "Name")
     private String name;
 
-    @ResaleTableColHeader(header = "Type")
+    @DbColumn(columnName = "type")
+    @HtmlTableColHeader(header = "Type")
     private String type;
 
-    @ResaleTableColHeader(header = "Price")
+    @DbColumn(columnName = "price")
+    @HtmlTableColHeader(header = "Price")
     private double price;
 
-    @ResaleTableColHeader(header = "Image")
+    @DbColumn(columnName = "image")
+    @HtmlTableColHeader(header = "Image")
     private String imageURL;
 
     public Item() {

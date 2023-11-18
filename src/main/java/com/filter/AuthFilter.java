@@ -35,7 +35,7 @@ public class AuthFilter implements Filter {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }
         } else {
-            if( servletPath.equals("/landing")  || servletPath.equals("/")  || servletPath.equals("/category")) {
+            if( servletPath.equals("/landing")  || servletPath.equals("/")  || servletPath.equals("/home")) {
                 filterChain.doFilter(servletRequest, servletResponse);
             } else if(httpSession.isNew()) {
                 httpSession.invalidate();

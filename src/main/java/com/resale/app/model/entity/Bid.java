@@ -1,28 +1,29 @@
 package com.resale.app.model.entity;
 
 import java.io.Serializable;
-import com.resale.app.view.html.ResaleHtmlForm;
-import com.resale.app.view.html.ResaleHtmlFormField;
-import com.resale.app.view.html.ResaleTableColHeader;
 
-@ResaleHtmlForm(label = "Bid", url = "./bid")
+import com.resale.app.view.helper.HtmlForm;
+import com.resale.app.view.helper.HtmlFormField;
+import com.resale.app.view.helper.HtmlTableColHeader;
+
+@HtmlForm(label = "Bid", url = "./bid")
 public class Bid implements Serializable {
     private long id;
 
-    @ResaleTableColHeader(header = "Item Name")
-    @ResaleHtmlFormField(label = "bid-item-name")
+    @HtmlTableColHeader(header = "Item Name")
+    @HtmlFormField(label = "bid-item-name")
     private String itemName;
 
-    @ResaleTableColHeader(header = "User Name")
-    @ResaleHtmlFormField(label = "bid-user-name")
+    @HtmlTableColHeader(header = "User Name")
+    @HtmlFormField(label = "bid-user-name")
     private String userName;
 
-    @ResaleTableColHeader(header = "PhoneNumber")
-    @ResaleHtmlFormField(label = "phone-number")
+    @HtmlTableColHeader(header = "PhoneNumber")
+    @HtmlFormField(label = "phone-number")
     private String phone;
 
-    @ResaleTableColHeader(header = "Bid Amount")
-    @ResaleHtmlFormField(label = "bid-amount")
+    @HtmlTableColHeader(header = "Bid Amount")
+    @HtmlFormField(label = "bid-amount")
     private double bidAmount;
 
     private String trackID;
