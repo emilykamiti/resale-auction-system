@@ -5,22 +5,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.resale.app.view.css.AppCss;
-import com.resale.app.view.navigationbar.TopNavigationBar;
 
 public class AppPage implements Serializable {
 
     public void renderHtml(HttpServletRequest req, HttpServletResponse resp,
             int activeMenu, String content) throws IOException {
-
-        HttpSession session = req.getSession();
-
-        ServletContext ctx = req.getServletContext();
 
         PrintWriter print = resp.getWriter();
 
