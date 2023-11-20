@@ -1,23 +1,31 @@
 package com.resale.app.bean;
 
-
-
-
 import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.resale.app.model.entity.User;
-import com.resale.database.Database;
+import com.resale.database.MysqlDatabase;
 
 public class AuthBean implements AuthBeanI, Serializable {
 
-    Database database = Database.getDbInstance();
+    public User authenticate(User loginUser) throws SQLException {
 
-    public User authenticate(User loginUser) {
-        return (User) database.getData(User.class)
-            .stream()
-            .filter(user -> ((User)user).getUsername().equals(loginUser.getUsername())
-                    && ((User)user).getPassword().equals(loginUser.getPassword()))
-            .findAny()
-            .orElse(null);
+        PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
+            .prepareStatement("select id,username from users where username=? and password=? limit 1");
+        sqlStmt.setString(1, loginUser.getUsername());
+        sqlStmt.setString(2, loginUser.getPassword());
+
+        ResultSet result = sqlStmt.executeQuery();
+
+        User user = new User();
+
+        while (result.next()){
+            user.setId(result.getLong("id"));
+            user.setUsername(result.getString("username"));
+        }
+
+        return user;
     }
 }

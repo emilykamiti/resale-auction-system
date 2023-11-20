@@ -1,5 +1,6 @@
 package com.resale.app.bean;
 
+
 import java.util.List;
 
 import com.resale.database.Database;

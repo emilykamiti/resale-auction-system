@@ -1,11 +1,18 @@
 package com.resale.app.view.helper;
 
 
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class HtmlCmpRender implements Serializable {
 
@@ -17,7 +24,7 @@ public class HtmlCmpRender implements Serializable {
         HtmlTable htmlTable = dataClass.getAnnotation(HtmlTable.class);
 
         StringBuilder trBuilder = new StringBuilder();
-        trBuilder.append("<a class=\"linkBtn\" href=\"")
+        trBuilder.append("<a class=\"link-btn-add\" href=\"")
             .append(htmlTable.addUrl()).append("\">Add</a><br/>")
             .append("<table><tr>");
 
@@ -45,7 +52,20 @@ public class HtmlCmpRender implements Serializable {
 
                     try {
                         field.setAccessible(true);
-                        trBuilder.append("<td>").append(field.get(data)).append("</td>");
+                        HtmlTableColHeader colHeader = field.getAnnotation(HtmlTableColHeader.class);
+
+                        Object colData;
+                        if (StringUtils.isNotBlank(colHeader.dateFormat()))
+                            colData = new SimpleDateFormat(colHeader.dateFormat()).format((Date) field.get(data));
+                        else if (StringUtils.isNotBlank(colHeader.numberFormat()))
+                            colData = new DecimalFormat(colHeader.numberFormat())
+                                .format(Optional.ofNullable(field.get(data)).orElse(BigDecimal.ZERO));
+                        else
+                            colData = field.get(data);
+
+                        trBuilder.append("<td>")
+                            .append(Optional.ofNullable(colData).orElse(""))
+                            .append("</td>");
 
                     } catch (IllegalAccessException e) {
                         throw new RuntimeException(e);
@@ -65,8 +85,6 @@ public class HtmlCmpRender implements Serializable {
     }
 
     public static String form(Class<?> model){
-
-        System.out.println(">>>>>>>>>" + model.getName());
 
         HtmlForm htmlFormMarker = null;
         if (model.isAnnotationPresent(HtmlForm.class))
@@ -91,12 +109,20 @@ public class HtmlCmpRender implements Serializable {
 
             htmlForm
                 .append("<label for=\"").append(ifBlank(formField.labelFor(), fieldName)).append("\">")
-                .append(ifBlank(formField.label(),fieldName))
+                .append(ifBlank(formField.label(), fieldName))
+                .append(formField.required()?"<span style=\"color:red;\">*</span> ":"")
                 .append(":</label><br>");
 
-            htmlForm.append("<input type=\"text\" id=\"").append(ifBlank(formField.id(),fieldName))
-                .append("\" name=\"").append(ifBlank(formField.name(),fieldName))
-                .append("\" ><br>");
+            htmlForm.append("<input type=\"")
+                .append(formField.type())
+                .append("\" id=\"").append(ifBlank(formField.id(), fieldName))
+                .append("\" name=\"").append(ifBlank(formField.name(), fieldName)).append("\" ")
+                .append(formField.required()?"required" : "")
+                .append("><br>");
+
+            //if (field.getClass().isEnum()){
+
+            //}
 
         }
 

@@ -2,6 +2,7 @@ package com.resale.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -28,20 +29,29 @@ public class LoginAction extends BaseAction {
         }
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User loginUser = new User();
-        User userDetails = authBean.authenticate(loginUser);
+     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 
-        if (userDetails != null) {
-            HttpSession httpSession = req.getSession(true);
+        User loginUser  = serializeForm(User.class, req.getParameterMap());
 
-            httpSession.setAttribute("loggedInId", String.valueOf(new Date().getTime()));
-            httpSession.setAttribute("username", loginUser.getUsername());
+        try {
+            User userDetails = authBean.authenticate(loginUser);
 
-            resp.sendRedirect("./home");
-            return;
+            if (userDetails != null) {
+                HttpSession httpSession = req.getSession(true);
+
+                httpSession.setAttribute("loggedInId", new Date().getTime() + "");
+                httpSession.setAttribute("username", loginUser.getUsername());
+
+                resp.sendRedirect("./home");
+
+            }
+
+            PrintWriter print = resp.getWriter();
+            print.write("<html><body>Invalid login details <a href=\".\"> Login again </a></body></html>");
+        }catch (Exception ex) {
+            ex.printStackTrace();
         }
-        PrintWriter printWriter = resp.getWriter();
-        printWriter.println("<html><body>Invalid login details <a href=\".\"> Login again </a></body></html>");
+
     }
+
 }

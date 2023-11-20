@@ -83,7 +83,7 @@
 
     <div class="text-center">
         <div class="registration-links">
-            <a href="./useraction">Register</a> | <a href="./forgotpassword">Forgot Password</a>
+            <a href="./register.jsp">Register</a> | <a href="./forgotpassword">Forgot Password</a>
         </div>
     </div>
 </div>

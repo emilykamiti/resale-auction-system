@@ -9,13 +9,18 @@ import java.lang.annotation.Target;
     @Retention(RetentionPolicy.RUNTIME)
     public @interface HtmlFormField {
     
-        String labelFor() default "";
-    
-        String label() default "";
-    
-        String id() default "";
-    
-        String name() default "";
+       
+    String labelFor() default "";
+
+    String label() default "";
+
+    String id() default "";
+
+    String name() default "";
+
+    HtmlFormFieldType type() default HtmlFormFieldType.TEXT;
+
+    boolean required() default false;
 
     
     }

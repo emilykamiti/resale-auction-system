@@ -1,22 +1,23 @@
 package com.resale.app.model.entity;
 
+
 import java.io.Serializable;
 
-import com.resale.app.view.helper.HtmlForm;
-import com.resale.app.view.helper.HtmlFormField;
+import com.resale.database.helper.DbTable;
+import com.resale.database.helper.DbTableColumn;
 
-@HtmlForm(label = "User", url = "./user")
+@DbTable(name = "users")
 public class User implements Serializable {
 
+    @DbTableColumn(name = "id", definition = "int")
     private Long id;
 
-    @HtmlFormField(label = "user-username")
+    @DbTableColumn(name = "username")
     private String username;
 
-    @HtmlFormField(label = "password")
+    @DbTableColumn(name = "password")
     private String password;
 
-    @HtmlFormField(label = "confirm-password")
     private String confirmPassword;
 
     public User(){}

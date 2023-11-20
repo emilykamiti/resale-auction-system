@@ -5,27 +5,28 @@ import java.io.Serializable;
 import com.resale.app.view.helper.HtmlForm;
 import com.resale.app.view.helper.HtmlTable;
 import com.resale.app.view.helper.HtmlTableColHeader;
-import com.resale.database.helper.DbColumn;
+import com.resale.database.helper.DbTable;
+import com.resale.database.helper.DbTableColumn;
 
 
-
+@DbTable(name = "items")
 @HtmlTable(addUrl = "./items?action=add")
 @HtmlForm(label = "Item", url = "./item")
 public class Item implements Serializable {
 
- @DbColumn(columnName = "name")
+ @DbTableColumn(name = "name")
     @HtmlTableColHeader(header = "Name")
     private String name;
 
-    @DbColumn(columnName = "type")
+    @DbTableColumn(name = "type")
     @HtmlTableColHeader(header = "Type")
     private String type;
 
-    @DbColumn(columnName = "price")
+    @DbTableColumn(name = "price")
     @HtmlTableColHeader(header = "Price")
     private double price;
 
-    @DbColumn(columnName = "image")
+    @DbTableColumn(name = "image")
     @HtmlTableColHeader(header = "Image")
     private String imageURL;
 

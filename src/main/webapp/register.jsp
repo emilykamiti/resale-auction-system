@@ -63,7 +63,7 @@
     <h1 class="title">Resale Auction Registration</h1>
     <div class="card">
         <div class="card-body">
-            <form action="./useraction" method="post">
+            <form action="./user" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username" required>

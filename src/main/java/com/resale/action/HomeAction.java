@@ -3,8 +3,6 @@ package com.resale.action;
 import com.resale.app.bean.ItemBean;
 import com.resale.app.bean.ItemBeanI;
 import com.resale.app.model.entity.Item;
-import com.resale.app.view.helper.AppPage;
-import com.resale.app.view.helper.HtmlCmpRender;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
