@@ -13,7 +13,7 @@ public class MysqlDatabase implements Serializable {
 
     private static final String USER = "root";
 
-    private static final String PASSWORD = "your_password";
+    private static final String PASSWORD = "nasinza2891";
 
     private static MysqlDatabase database;
 

@@ -18,7 +18,7 @@ public class UserAction extends BaseAction {
     UserBeanI userBean = new UserBean();
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User registerUser = new User();
+        User registerUser = serializeForm(User.class, req.getParameterMap());
         try {
             userBean.register(registerUser);
         } catch (SQLException e) {
