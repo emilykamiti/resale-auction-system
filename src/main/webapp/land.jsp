@@ -48,33 +48,31 @@
         .button:hover {
             background-color: #0056b3;
         }
-
-        /* Styles for navigation bar */
         .navbar {
             display: flex;
-            justify-content: flex-start; /* Changed to flex-start */
+            justify-content: flex-start; 
             align-items: center;
             padding: 20px;
             position: fixed;
             width: 100%;
             z-index: 1000;
-            top: 0; /* Placing the navbar at the top */
+            top: 0; 
             background-color: transparent;
         }
 
         .dropdown {
             margin-right: 20px;
-            position: relative; /* Added position relative */
+            position: relative; 
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: blue; /* Changed background color to blue */
-            min-width: 150px; /* Slightly increased width */
+            background-color: blue; 
+            min-width: 150px; 
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
-            padding: 10px; /* Added padding for spacing */
+            padding: 10px; 
         }
 
         .dropdown.active .dropdown-content {
@@ -82,14 +80,14 @@
         }
 
         .dropdown-item {
-            margin-bottom: 10px; /* Adding some space between items */
+            margin-bottom: 10px; 
         }
 
         .dropdown-item a {
             display: block;
             font-weight: bold;
             color: black;
-            text-decoration: none; /* Removing underline */
+            text-decoration: none; 
             padding: 8px 0;
         }
 
@@ -99,22 +97,6 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="dropdown" id="dropdown">
-            <button class="dropdown-btn" onclick="toggleDropdown()">Category</button>
-            <div class="dropdown-content">
-                <div class="dropdown-item">
-                    <a href="#">Accessory</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#">Luxury</a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#">Food</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container">
         <h1 class="heading">eSales Auctioning</h1>

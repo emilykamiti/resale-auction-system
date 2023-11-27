@@ -11,14 +11,17 @@ public class HtmlMenuToolbar implements HtmlMenu,Serializable {
     private int activeLink;
 
     private final List<MenuLink> links = new ArrayList<>();
-
+    
     {
         links.add(new MenuLink("./track", "Track", MenuLinkStatus.NOT_ACTIVE));
         links.add(new MenuLink("./payment", "Payment", MenuLinkStatus.NOT_ACTIVE));
         links.add(new MenuLink("./logout", "Logout", MenuLinkStatus.ACTIVE));
         links.add(new MenuLink("./login", "Login", MenuLinkStatus.ACTIVE));
         links.add(new MenuLink("./showbid", "Bids", MenuLinkStatus.ACTIVE));
+        links.add(new MenuLink("./type", "category", MenuLinkStatus.ACTIVE));
+        links.add(new MenuLink("./item", "Add Item", MenuLinkStatus.ACTIVE));
     }
+
 
     public String getMenu() {
 

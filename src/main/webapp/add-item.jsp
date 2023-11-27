@@ -59,35 +59,36 @@
             background-color: #FF8C00;
         }
     </style>
-</head>
+
+/head>
 <body>
     <div class="container">
-        <h1 class="title">Resale Auction</h1>
-        <div class="card">
-            <div class="card-body">
-                <form action="./home" method="post">
-                    <div class="form-group">
-                        <label for="name">Item Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="type">Item Type</label>
-                        <input type="text" class="form-control" id="type" name="type" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Item Price</label>
-                        <input type="text" class="form-control" id="price" name="price" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="imageURL">Item Image URL</label>
-                        <input type="text" class="form-control" id="imageURL" name="imageURL" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="addItem">Add Item</button>
-                </form>
+        <h1>Add Item</h1>
+        <form action="./item" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
-        </div>
-        <br/>
-       
+            <div class="form-group">
+                <label for="type">Type:</label>
+                <select class="form-control" id="type" name="type" required>
+                    <option value="">Select a type</option>
+                    <option value="HOME_ACCESSORIES">Home Accessories</option>
+                    <option value="LUXURY">Luxury</option>
+                    <option value="FURNITURE">Furniture</option>
+                    <option value="CARS">Cars</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Item</button>
+        </form>
     </div>
 </body>
 </html>
