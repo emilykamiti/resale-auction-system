@@ -47,13 +47,9 @@ public class HtmlCards {
             }
 
             cardBuilder.append("<div style=\"display: flex; justify-content: space-between; margin: 20px 30px;\">");
-
-            cardBuilder.append("<a href=\"/ecommerce/viewMore?id=" + getFieldValue("id", model)
-                    + "\" style=\"text-decoration: none; padding: 10px 25px; color: white; background: #E0588E; border-radius: 3px;\">VIEW MORE</a>");
             cardBuilder.append("<button  id=\"" + getFieldValue("id", model)
                     + "\" name=\"" + getFieldValue("name", model) + "\" type=\""
-                    + getFieldValue("type", model) + "\" price=\"" + getFieldValue("price", model)
-                    );
+                    + getFieldValue("type", model) + "\" price=\"" + getFieldValue("price", model));
             cardBuilder.append("</div>");
 
             cardBuilder.append("</div>");

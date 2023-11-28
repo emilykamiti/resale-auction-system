@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.resale.app.bean.ItemBean;
 import com.resale.app.bean.ItemBeanI;
 import com.resale.app.model.entity.Item;
-import com.resale.app.model.entity.User;
-
 
 import java.util.logging.Logger;
 
@@ -24,7 +22,7 @@ public class ItemAction extends BaseAction {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("./add-item.jsp").forward(req, resp);
     }
-  
+
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.info("doPost method called");
 

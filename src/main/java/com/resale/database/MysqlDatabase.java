@@ -1,6 +1,5 @@
 package com.resale.database;
 
-
 import com.resale.app.model.entity.Bid;
 import com.resale.app.model.entity.Item;
 import com.resale.app.model.entity.User;
@@ -28,13 +27,15 @@ public class MysqlDatabase implements Serializable {
 
     private static MysqlDatabase database;
     private Connection connection;
+
     private MysqlDatabase() throws SQLException, NamingException {
         Context ctx = new InitialContext();
 
         DataSource dataSource = (DataSource) ctx.lookup("java:jboss/datasources/resale");
         connection = dataSource.getConnection();
     }
-    public static MysqlDatabase getInstance(){
+
+    public static MysqlDatabase getInstance() {
         if (database == null) {
             try {
                 database = new MysqlDatabase();
@@ -46,7 +47,7 @@ public class MysqlDatabase implements Serializable {
 
     }
 
-    public static void updateSchema(){
+    public static void updateSchema() {
         System.out.println("*************** updating schema database *************");
 
         try {
@@ -77,9 +78,10 @@ public class MysqlDatabase implements Serializable {
                     DbTableColumn dbTableColumn = field.getAnnotation(DbTableColumn.class);
 
                     sqlBuilder.append(dbTableColumn.name()).append(" ")
-                        .append(dbTableColumn.definition())
-                        .append(field.isAnnotationPresent(DbTableId.class)?" NOT NULL AUTO_INCREMENT PRIMARY KEY" : "")
-                        .append(",");
+                            .append(dbTableColumn.definition())
+                            .append(field.isAnnotationPresent(DbTableId.class) ? " NOT NULL AUTO_INCREMENT PRIMARY KEY"
+                                    : "")
+                            .append(",");
                 }
 
                 sqlBuilder.append(")");
@@ -94,13 +96,13 @@ public class MysqlDatabase implements Serializable {
             System.out.println(ex);
         }
 
-System.out.println("table created..........................");
+        System.out.println("table created..........................");
     }
 
     public static void insert(Object entity) {
 
         try {
-System.out.println("inserting data into table.....................");
+            System.out.println("inserting data into table.....................");
             Class<?> clazz = entity.getClass();
             if (!clazz.isAnnotationPresent(DbTable.class))
                 return;
@@ -131,46 +133,37 @@ System.out.println("inserting data into table.....................");
             }
 
             String queryBuilder = "insert into " +
-                dbTable.name() +
-                "(" +
-                columnBuilder +
-                ")" +
-                " values(" +
-                paramPlaceHolderBuilder +
-                ")";
+                    dbTable.name() +
+                    "(" +
+                    columnBuilder +
+                    ")" +
+                    " values(" +
+                    paramPlaceHolderBuilder +
+                    ")";
 
             String query = queryBuilder.replace(",)", ")");
             System.out.println("Query: " + query);
 
             PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
-                .prepareStatement(query);
+                    .prepareStatement(query);
 
-        
-        
-                int paramIdx = 1;
-                for (Object param : parameters) {
-                    if (param == null) {
-                        sqlStmt.setNull(paramIdx++, Types.NULL);
-                        continue;
-                    }
-                    if (param instanceof BigDecimal) {
-                        sqlStmt.setBigDecimal(paramIdx++, (BigDecimal) param);
-                    } else if (param instanceof Long) {
-                        sqlStmt.setLong(paramIdx++, (Long) param);
-                    } else if (param instanceof Double) {
-                        sqlStmt.setDouble(paramIdx++, (Double) param);
-                    } else if (param instanceof Enum) {
-                        sqlStmt.setString(paramIdx++, ((Enum<?>) param).name());
-                    } else if (param instanceof byte[]) {
-                        sqlStmt.setBytes(paramIdx++, (byte[]) param);
-                    } else if (param instanceof String) {
-                        sqlStmt.setString(paramIdx++, (String) param);
-                    }
+            int paramIdx = 1;
+            for (Object param : parameters) {
+                if (param instanceof BigDecimal) {
+                    sqlStmt.setBigDecimal(paramIdx++, (BigDecimal) param);
+                } else if (param instanceof Long) {
+                    sqlStmt.setLong(paramIdx++, (Long) param);
+                } else if (param instanceof Double) {
+                    sqlStmt.setDouble(paramIdx++, (Double) param);
+                } else if (param instanceof Enum) {
+                    sqlStmt.setString(paramIdx++, ((Enum<?>) param).name());
+                } else {
+                    sqlStmt.setString(paramIdx++, (String) param);
                 }
-
+            }
             sqlStmt.executeUpdate();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -200,7 +193,7 @@ System.out.println("inserting data into table.....................");
             entity = clazz.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
             throw new SQLException(e);
-        } 
+        }
 
         List<Field> fields = new ArrayList<>(Arrays.asList(clazz.getSuperclass().getDeclaredFields()));
         fields.addAll(Arrays.asList(clazz.getDeclaredFields()));

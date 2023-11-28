@@ -72,7 +72,6 @@
             <div class="form-group">
                 <label for="type">Type:</label>
                 <select class="form-control" id="type" name="type" required>
-                    <option value="">Select a type</option>
                     <option value="HOME_ACCESSORIES">Home Accessories</option>
                     <option value="LUXURY">Luxury</option>
                     <option value="FURNITURE">Furniture</option>
