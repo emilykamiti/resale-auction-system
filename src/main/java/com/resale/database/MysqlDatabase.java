@@ -101,7 +101,6 @@ public class MysqlDatabase implements Serializable {
     }
 
     public static void insert(Object entity) {
-
         try {
             System.out.println("inserting data into table.....................");
             Class<?> clazz = entity.getClass();
@@ -130,7 +129,6 @@ public class MysqlDatabase implements Serializable {
                 columnBuilder.append(dbTableColumn.name()).append(",");
                 paramPlaceHolderBuilder.append("?").append(",");
                 parameters.add(field.get(entity));
-
             }
 
             String queryBuilder = "insert into " +
@@ -147,19 +145,23 @@ public class MysqlDatabase implements Serializable {
 
             PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
                     .prepareStatement(query);
+
             int paramIdx = 1;
             for (Object param : parameters) {
                 if (param instanceof BigDecimal)
                     sqlStmt.setBigDecimal(paramIdx++, (BigDecimal) param);
                 else if (param instanceof Long)
                     sqlStmt.setLong(paramIdx++, (long) param);
-                else if (param instanceof ItemType) { 
+                else if (param instanceof ItemType) {
                     sqlStmt.setString(paramIdx++, ((ItemType) param).name());
                 } else if (param instanceof Double) {
                     sqlStmt.setDouble(paramIdx++, (double) param);
                 } else
                     sqlStmt.setString(paramIdx++, param.toString());
             }
+
+            int rowsAffected = sqlStmt.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
 
         } catch (Exception e) {
             e.printStackTrace();
