@@ -3,6 +3,7 @@ package com.resale.action;
 import com.resale.app.bean.ItemBean;
 import com.resale.app.bean.ItemBeanI;
 import com.resale.app.model.entity.Item;
+import com.resale.app.view.helper.HtmlCards;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/home")
 public class HomeAction extends BaseAction {
@@ -19,17 +20,16 @@ public class HomeAction extends BaseAction {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String addItemLink = "<br/><a href=\"" + req.getContextPath() + "/add-item.jsp\">Add Item</a>";
-
-        renderPage(req, resp, 0, Item.class, new ArrayList<Item>());
+        List<Item> itemList = itemBean.list(Item.class);
     
-    }
+        String itemCards = HtmlCards.generateCards(itemList);
+    
+        String pageContent = itemCards;
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Item newItem = new Item();
-
-        String itemImage = req.getParameter("imageURL");
-        newItem.setImageURL(itemImage);
-        resp.sendRedirect(req.getContextPath() + "/home");
+        req.setAttribute("pageContent", pageContent);
+        req.getRequestDispatcher("./app/index.jsp").forward(req, resp);
     }
+    
+  
+
 }

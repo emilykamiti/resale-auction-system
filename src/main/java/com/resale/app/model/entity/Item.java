@@ -1,34 +1,36 @@
 package com.resale.app.model.entity;
 
-import java.io.Serializable;
-
 import com.resale.app.view.helper.HtmlForm;
-import com.resale.app.view.helper.HtmlTable;
+import com.resale.app.view.helper.HtmlFormField;
+import com.resale.app.view.helper.HtmlCardAnnotations;
 import com.resale.app.view.helper.HtmlTableColHeader;
 import com.resale.database.helper.DbTable;
 import com.resale.database.helper.DbTableColumn;
 
-
 @DbTable(name = "items")
-@HtmlTable(addUrl = "./items?action=add")
 @HtmlForm(label = "Item", url = "./item")
-public class Item implements Serializable {
+public class Item extends BaseEntity{
 
- @DbTableColumn(name = "name")
+    @DbTableColumn(name = "name")
     @HtmlTableColHeader(header = "Name")
     private String name;
 
     @DbTableColumn(name = "type")
-    @HtmlTableColHeader(header = "Type")
-    private String type;
+    @HtmlCardAnnotations(label ="type" )
+    @HtmlFormField(label ="type")
+    @HtmlTableColHeader(header = "Item Type")
+    private ItemType type; 
 
     @DbTableColumn(name = "price")
-    @HtmlTableColHeader(header = "Price")
+    @HtmlCardAnnotations(label ="price" )
+    @HtmlFormField(label ="price")
+    @HtmlTableColHeader(header = "Item Price")
     private double price;
 
     @DbTableColumn(name = "image")
-    @HtmlTableColHeader(header = "Image")
-    private String imageURL;
+    @HtmlCardAnnotations(label = "image")
+    @HtmlFormField(label ="image")
+    private byte[] image;
 
     public Item() {
     }
@@ -41,11 +43,11 @@ public class Item implements Serializable {
         this.name = name;
     }
 
-    public String getType() {
+    public ItemType getType() { 
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ItemType type) {
         this.type = type;
     }
 
@@ -57,19 +59,18 @@ public class Item implements Serializable {
         this.price = price;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
-    public Item(String name, String type, double price, String imageURL) {
+    public Item(String name, ItemType type, double price, byte[] image) { 
         this.name = name;
         this.type = type;
         this.price = price;
-        this.imageURL = imageURL;
+        this.image = image;
     }
-
 }

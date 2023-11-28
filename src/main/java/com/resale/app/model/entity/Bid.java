@@ -36,7 +36,6 @@ public class Bid implements Serializable {
         this.bidAmount = bidAmount;
     }
 
-    // Getters and setters for trackID
     public String getTrackID() {
         return trackID;
     }
@@ -45,7 +44,6 @@ public class Bid implements Serializable {
         this.trackID = trackID;
     }
 
-    // Getters and setters for other fields
     public long getId() {
         return id;
     }
