@@ -20,10 +20,8 @@ public class TypeAction extends BaseAction {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Item> items = itemBean.list(Item.class);
-        String productItems = Type.showType(items); 
-        renderPage(req, resp, 3, productItems);
+        String itemCards = Type.showType(items);
+        renderPage(req, resp, 3, itemCards);
     }
 
-    private void renderPage(HttpServletRequest req, HttpServletResponse resp, int i, String productItems) {
-    }
 }

@@ -28,11 +28,11 @@ public class HtmlCards {
                     "<div class=\"show_type\" style=\"border-radius: 5px; margin-top: 20px; text-align: center; background: #C2D7EB; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); transition: all 0.3s; display: inline-block; transform-origin: center;\">");
 
             for (Field field : fields) {
-                if (!field.isAnnotationPresent(HtmlCardAnnotations.class)) {
+                if (!field.isAnnotationPresent(HtmlCrdRender.class)) {
                     continue;
                 }
 
-                HtmlCardAnnotations annotation = field.getAnnotation(HtmlCardAnnotations.class);
+                HtmlCrdRender annotation = field.getAnnotation(HtmlCrdRender.class);
                 try {
                     field.setAccessible(true);
                     if (annotation.label().equals("Image URL: ")) {

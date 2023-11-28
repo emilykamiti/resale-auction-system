@@ -2,6 +2,7 @@ package com.resale.database;
 
 import com.resale.app.model.entity.Bid;
 import com.resale.app.model.entity.Item;
+import com.resale.app.model.entity.ItemType;
 import com.resale.app.model.entity.User;
 import com.resale.database.helper.DbTable;
 import com.resale.database.helper.DbTableColumn;
@@ -142,26 +143,23 @@ public class MysqlDatabase implements Serializable {
                     ")";
 
             String query = queryBuilder.replace(",)", ")");
-            System.out.println("Query: " + query);
+            System.out.println("Query is ......: " + query);
 
             PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
                     .prepareStatement(query);
-
             int paramIdx = 1;
             for (Object param : parameters) {
-                if (param instanceof BigDecimal) {
+                if (param instanceof BigDecimal)
                     sqlStmt.setBigDecimal(paramIdx++, (BigDecimal) param);
-                } else if (param instanceof Long) {
-                    sqlStmt.setLong(paramIdx++, (Long) param);
+                else if (param instanceof Long)
+                    sqlStmt.setLong(paramIdx++, (long) param);
+                else if (param instanceof ItemType) { 
+                    sqlStmt.setString(paramIdx++, ((ItemType) param).name());
                 } else if (param instanceof Double) {
-                    sqlStmt.setDouble(paramIdx++, (Double) param);
-                } else if (param instanceof Enum) {
-                    sqlStmt.setString(paramIdx++, ((Enum<?>) param).name());
-                } else {
-                    sqlStmt.setString(paramIdx++, (String) param);
-                }
+                    sqlStmt.setDouble(paramIdx++, (double) param);
+                } else
+                    sqlStmt.setString(paramIdx++, param.toString());
             }
-            sqlStmt.executeUpdate();
 
         } catch (Exception e) {
             e.printStackTrace();

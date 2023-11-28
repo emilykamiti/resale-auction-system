@@ -21,15 +21,11 @@ public class HomeAction extends BaseAction {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Item> itemList = itemBean.list(Item.class);
-    
-        String itemCards = HtmlCards.generateCards(itemList);
-    
-        String pageContent = itemCards;
 
-        req.setAttribute("pageContent", pageContent);
-        req.getRequestDispatcher("./app/index.jsp").forward(req, resp);
+        String itemCards = HtmlCards.generateCards(itemList);
+
+        renderPage(req, resp, 3, itemCards);
+        
     }
-    
-  
 
 }

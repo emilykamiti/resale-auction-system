@@ -7,6 +7,7 @@ com/resale/action/ShowBid.class
 com/resale/app/view/helper/HtmlMenuToolbar.class
 com/resale/app/view/helper/HtmlCards.class
 com/resale/app/view/helper/HtmlMenu.class
+com/resale/app/view/helper/HtmlCrdRender.class
 com/resale/action/LandingAction.class
 com/filter/AuthFilter.class
 com/resale/database/helper/DbTable.class
@@ -24,7 +25,6 @@ com/resale/app/bean/AuthBean.class
 com/resale/app/view/helper/HtmlTableColHeader.class
 com/resale/app/view/helper/HtmlFormField.class
 com/resale/database/MysqlDatabase.class
-com/resale/app/view/helper/HtmlCardAnnotations.class
 com/resale/app/model/entity/ItemType.class
 com/resale/app/bean/BidBeanI.class
 com/resale/action/PaymentAction.class
