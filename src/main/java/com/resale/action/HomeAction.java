@@ -15,7 +15,6 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/home")
 public class HomeAction extends BaseAction {
-
     private ItemBeanI itemBean = new ItemBean();
 
     @Override
@@ -23,7 +22,6 @@ public class HomeAction extends BaseAction {
         List<Item> itemList = itemBean.list(Item.class);
 
         String itemCards = HtmlCards.generateCards(itemList);
-
         renderPage(req, resp, 3, itemCards);
         
     }

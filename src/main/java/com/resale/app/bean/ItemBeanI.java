@@ -7,6 +7,6 @@ import com.resale.app.model.entity.Item;
 
 public interface ItemBeanI extends GenericBeanI<Item> {
 
-    Item  addItems(Item itemsUpdate) throws SQLException;
+    Item  addItems(Item item) throws SQLException;
 
 }
