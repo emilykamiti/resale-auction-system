@@ -23,7 +23,6 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/AuthBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/TypeAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlCards.java
-/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlCardAnnotations.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/filter/AuthFilter.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/UserBeanI.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/BidAction.java
@@ -37,6 +36,7 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/ShowBid.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlMenuToolbar.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/utils/ItemTypeConverter.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlCrdRender.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/event/AppInit.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/database/helper/DbTable.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlMenu.java
