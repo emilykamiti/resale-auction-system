@@ -119,9 +119,9 @@ public class HtmlCmpRender implements Serializable {
                 .append(formField.required()?"required" : "")
                 .append("><br>");
 
-            //if (field.getClass().isEnum()){
+            if (field.getClass().isEnum()){
 
-            //}
+            }
 
         }
 

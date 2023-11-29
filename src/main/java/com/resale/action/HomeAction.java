@@ -5,6 +5,7 @@ import com.resale.app.bean.ItemBeanI;
 import com.resale.app.model.entity.Item;
 import com.resale.app.view.helper.HtmlCards;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,15 +16,20 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/home")
 public class HomeAction extends BaseAction {
-    private ItemBeanI itemBean = new ItemBean();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Item> itemList = itemBean.list(Item.class);
+    @EJB
+    ItemBeanI itemBean;
 
-        String itemCards = HtmlCards.generateCards(itemList);
-        renderPage(req, resp, 3, itemCards);
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       
+        List<Item> items = itemBean.list(Item.class);
+        for (Item item : items) {
+            System.out.println(item.getId());
+            System.out.println(item.getitemName());
+        }
+                String commodity = HtmlCards.generateCards(items);
         
-    }
-
-}
+                renderPage(req, resp, 3, commodity);
+        
+            }
+        }

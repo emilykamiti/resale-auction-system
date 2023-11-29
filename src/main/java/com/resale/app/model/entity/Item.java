@@ -14,7 +14,7 @@ public class Item extends BaseEntity {
 
     @DbTableColumn(name = "name")
     @HtmlTableColHeader(header = "Name")
-    private String name;
+    private String itemName;
 
     @DbTableColumn(name = "type")
     @HtmlCrdRender(label = "type")
@@ -35,12 +35,12 @@ public class Item extends BaseEntity {
     public Item() {
     }
 
-    public String getName() {
-        return name;
+    public String getitemName() {
+        return itemName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setitemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public ItemType getType() {
@@ -67,8 +67,8 @@ public class Item extends BaseEntity {
         this.image = image;
     }
 
-    public Item(String name, ItemType type, double price, String image) {
-        this.name = name;
+    public Item(String itemName, ItemType type, double price, String image) {
+        this.itemName = itemName;
         this.type = type;
         this.price = price;
         this.image = image;
@@ -76,6 +76,6 @@ public class Item extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Item [name=" + name + ", type=" + type + ", price=" + price + ", image=" + image + "]";
+        return "Item [itemName=" + itemName + ", type=" + type + ", price=" + price + ", image=" + image + "]";
     }
 }

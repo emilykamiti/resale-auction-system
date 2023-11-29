@@ -53,8 +53,6 @@
         }
     </style>
 </head>
-
-/head>
 <body>
     <div class="container">
         <h1 class="title">Resale Auction</h1>
