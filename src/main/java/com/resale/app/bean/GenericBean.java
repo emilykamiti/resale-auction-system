@@ -3,28 +3,34 @@ package com.resale.app.bean;
 
 import java.util.List;
 
-import com.resale.database.Database;
-import com.resale.database.MysqlDatabase;
 
-public class GenericBean<T> implements GenericBeanI<T>{
+import com.resale.app.dao.GenericDao;
+import com.resale.app.dao.GenericDaoI;
+
+public  abstract class GenericBean<T> implements GenericBeanI<T>{
+
+     private final GenericDaoI<T> genericDao = new GenericDao<>();
 
     @SuppressWarnings({"unchecked","rawtypes"})
     @Override
     public List<T> list(Class<?> entity) {
-        return (List<T>) 
-        Database.getDbInstance().getData(entity);
+        return genericDao.list(entity);
 
     }
 
     @Override
-    public void addOrUpdateAccount(T entity) {
+    public void addOrUpdate(T entity) {
 
-       
-      MysqlDatabase.insert(entity);
+        genericDao.addOrUpdate(entity);
+
     }
 
     @Override
-    public void deleteAccount(T entity) {
-
+    public void delete(Class<?> entityClass, Long id) {
+        genericDao.delete(entityClass, id);
     }
+    public GenericDao<T> getDao(){
+        return (GenericDao<T>) genericDao;
+    }
+
 }

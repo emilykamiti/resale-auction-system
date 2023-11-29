@@ -8,6 +8,7 @@ com/resale/app/view/helper/HtmlMenuToolbar.class
 com/resale/app/view/helper/HtmlCards.class
 com/resale/app/view/helper/HtmlMenu.class
 com/resale/app/view/helper/HtmlCrdRender.class
+com/resale/app/dao/GenericDaoI.class
 com/resale/action/LandingAction.class
 com/filter/AuthFilter.class
 com/resale/database/helper/DbTable.class
@@ -44,6 +45,7 @@ com/resale/app/bean/UserBeanI.class
 com/resale/app/view/helper/MenuLinkStatus.class
 com/resale/database/Database.class
 com/resale/app/view/helper/HtmlTable.class
+com/resale/app/dao/GenericDao.class
 com/resale/app/model/entity/Bid.class
 com/resale/app/model/entity/BaseEntity.class
 com/resale/utils/FileUpload.class
