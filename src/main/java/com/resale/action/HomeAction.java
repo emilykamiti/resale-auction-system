@@ -21,15 +21,10 @@ public class HomeAction extends BaseAction {
     ItemBeanI itemBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       
+
         List<Item> items = itemBean.list(Item.class);
-        for (Item item : items) {
-            System.out.println(item.getId());
-            System.out.println(item.getitemName());
-        }
-                String commodity = HtmlCards.generateCards(items);
-        
-                renderPage(req, resp, 3, commodity);
-        
-            }
-        }
+        String commodity = HtmlCards.generateCards(items);
+        renderPage(req, resp, 3, commodity);
+
+    }
+}

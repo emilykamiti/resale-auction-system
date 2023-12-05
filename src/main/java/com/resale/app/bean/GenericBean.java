@@ -17,6 +17,10 @@ public  abstract class GenericBean<T> implements GenericBeanI<T>{
         return genericDao.list(entity);
 
     }
+    @Override
+    public T fetchItem(Class<T> entityClass, Long id) { 
+        return genericDao.fetch(entityClass, id);
+    }
 
     @Override
     public void addOrUpdate(T entity) {
@@ -25,10 +29,6 @@ public  abstract class GenericBean<T> implements GenericBeanI<T>{
 
     }
 
-    @Override
-    public void delete(Class<?> entityClass, Long id) {
-        genericDao.delete(entityClass, id);
-    }
     public GenericDao<T> getDao(){
         return (GenericDao<T>) genericDao;
     }
