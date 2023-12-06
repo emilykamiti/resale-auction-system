@@ -12,15 +12,19 @@ public class HtmlCards {
 
         StringBuilder cardBuilder = new StringBuilder();
 
-        cardBuilder.append("<div style=\" display: grid; grid-template-columns: repeat(3, 1fr); "
-                + "grid-gap: 30px; justify-content: center;\">");
+        cardBuilder.append("<div class=\"card-container\">");
+
+        // JavaScript function for handling button click
+        cardBuilder.append("<script>");
+        cardBuilder.append("function redirectToBidForm(itemId) {");
+        cardBuilder.append("  window.location.href = 'biditem.jsp?id=' + itemId;");
+        cardBuilder.append("}");
+        cardBuilder.append("</script>");
 
         for (Object model : models) {
             Field[] fields = model.getClass().getDeclaredFields();
 
-            cardBuilder.append("<div class=\"show_type\" style=\"border-radius: 5px; margin-top: 20px; "
-                    + "text-align: center; background: #C2D7EB; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); "
-                    + "transition: all 0.3s; display: inline-block; transform-origin: center;\">");
+            cardBuilder.append("<div class=\"card\">");
 
             for (Field field : fields) {
                 if (!field.isAnnotationPresent(HtmlCrdRender.class)) {
@@ -31,29 +35,36 @@ public class HtmlCards {
                 try {
                     field.setAccessible(true);
                     if (annotation.label().equals("image")) {
-                        cardBuilder.append("<img src='" + field.get(model) + "' alt='item image' "
-                                + "style=\"height: 250px; width: 250px;\">");
+                        cardBuilder.append("<img class=\"card-image\" src='" + field.get(model) + "' alt='item image'>");
                     } else {
-                        cardBuilder.append("<h3>").append(annotation.label()).append(field.get(model)).append("</h3>");
+                        cardBuilder.append("<h3 class=\"card-title\">").append(annotation.label())
+                                .append(field.get(model)).append("</h3>");
                     }
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
             }
 
-            cardBuilder.append("<div>");
-            cardBuilder.append("<button id=\"bidButton" + getFieldValue("id", model) + "\">Bid</button>");
+            cardBuilder.append("<div class=\"card-buttons\">");
+            cardBuilder.append("<button class=\"bid-button\" onclick=\"redirectToBidForm('")
+                    .append(getFieldValue("id", model)).append("')\">Bid</button>");
             cardBuilder.append("</div>");
 
             cardBuilder.append("</div>");
-            cardBuilder.append("<style>");
-            cardBuilder.append(".showType:hover {");
-            cardBuilder.append("  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.7);");
-            cardBuilder.append("  transform: scale(1.1);");
-            cardBuilder.append("}");
-            cardBuilder.append("</style>");
         }
+
         cardBuilder.append("</div>");
+
+        cardBuilder.append("<style>");
+        cardBuilder.append(".card-container { display: flex; flex-wrap: wrap; justify-content: space-around; }");
+        cardBuilder.append(
+                ".card { border-radius: 5px; margin-top: 20px; text-align: center; background: #C2D7EB; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); transition: all 0.3s; display: inline-block; transform-origin: center; width: 250px; padding: 15px; }");
+        cardBuilder.append(".card:hover { box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.7); transform: scale(1.1); }");
+        cardBuilder.append(".card-image { height: 250px; width: 250px; }");
+        cardBuilder.append(".card-buttons { margin-top: 10px; }");
+        cardBuilder.append(
+                ".bid-button { padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; }");
+        cardBuilder.append("</style>");
 
         return cardBuilder.toString();
     }

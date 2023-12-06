@@ -1,5 +1,6 @@
 package com.resale.database;
 
+import com.resale.app.model.entity.Bid;
 import com.resale.app.model.entity.Item;
 import com.resale.app.model.entity.ItemType;
 
@@ -59,6 +60,7 @@ public class MysqlDatabase implements Serializable {
             List<Class<?>> entities = new ArrayList<>();
             entities.add(User.class);
             entities.add(Item.class);
+            entities.add(Bid.class);
 
             for (Class<?> clazz : entities) {
                 if (!clazz.isAnnotationPresent(DbTable.class))
@@ -238,6 +240,68 @@ public class MysqlDatabase implements Serializable {
         }
     }
 
+    public static <T> T fetchItem(Class<T> entityClass, Long id) {
+        try {
+            if (!entityClass.isAnnotationPresent(DbTable.class))
+                return null;
+
+            DbTable dbTable = entityClass.getAnnotation(DbTable.class);
+
+            String query = "SELECT * FROM " + dbTable.name() + " WHERE id = ?";
+
+            Connection conn = MysqlDatabase.getInstance().getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setLong(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (!resultSet.next()) {
+                return null;
+            }
+
+            T object = entityClass.getDeclaredConstructor().newInstance();
+            List<Field> fields = new ArrayList<>(Arrays.asList(entityClass.getSuperclass().getDeclaredFields()));
+            fields.addAll(Arrays.asList(entityClass.getDeclaredFields()));
+
+            for (Field field : fields) {
+                field.setAccessible(true);
+                DbTableColumn dbColumn = field.getAnnotation(DbTableColumn.class);
+                if (dbColumn != null) {
+                    String columnName = dbColumn.name();
+
+                    if (field.getType().isEnum()) {
+                        String enumValue = resultSet.getString(columnName);
+                        if (enumValue != null) {
+                            Object enumConstant = Enum.valueOf((Class<Enum>) field.getType(), enumValue);
+                            field.set(object, enumConstant);
+                        }
+                    } else if (field.getType() == double.class) {
+                        double value = resultSet.getDouble(columnName);
+                        field.set(object, value);
+                    } else if (field.getType() == int.class) {
+                        int value = resultSet.getInt(columnName);
+                        if (field.getType() == Long.class) {
+                            field.set(object, (long) value);
+                        } else {
+                            field.set(object, value);
+                        }
+                    } else if (field.getType() == Long.class) {
+                        long value = resultSet.getLong(columnName);
+                        field.set(object, value);
+                    } else {
+                        Object value = resultSet.getObject(columnName);
+                        field.set(object, value);
+                    }
+                }
+            }
+
+            return object;
+
+        } catch (SQLException | InvocationTargetException | InstantiationException | IllegalAccessException
+                | NoSuchMethodException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
     public Connection getConnection() throws SQLException {
         if (dataSource == null) {
             throw new IllegalStateException("DataSource is null. Initialization error.");

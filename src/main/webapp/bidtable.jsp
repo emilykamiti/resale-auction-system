@@ -1,80 +1,32 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.resale.app.model.entity.Bid" %>
-<%@ page import="com.resale.app.bean.BidBean" %>
-<%@ page import="java.util.List" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-
 <head>
-    <title>Bid Table</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .confirmation-button, .rejection-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px 16px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .rejection-button {
-            background-color: #f44336;
-        }
-    </style>
+    <title>Display Bids</title>
 </head>
-
 <body>
-    <h2>Bid Table</h2>
-
-    <% BidBean bidBean = (BidBean) session.getAttribute("bidBean"); %>
-
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Phone</th>
-            <th>Bid Amount</th>
-            <th>Item Name</th>
-            <th>Action</th>
-        </tr>
-        <% if (bidBean != null) { %>
-            <% for (Bid bid : bidBean.getAllBids()) { %>
-                <tr>
-                    <td><%= bid.getUserName() %></td>
-                    <td><%= bid.getPhone() %></td>
-                    <td><%= bid.getBidAmount() %></td>
-                    <td><%= bid.getItemName() %></td>
-                    <td>
-                        <a href="./confirmbid?bidId=<%= bid.getId() %>" class="confirmation-button">Confirm</a>
-                        <a href="./rejectbid?bidId=<%= bid.getId() %>" class="rejection-button">Reject</a>
-                    </td>
-                </tr>
-            <% } %>
-        <% } else { %>
+    <h1>List of Bids</h1>
+    <c:if test="${not empty bids}">
+        <table border="1">
             <tr>
-                <td colspan="5">No bids available</td>
+                <th>Bid ID</th>
+                <th>Item ID</th>
+                <th>User ID</th>
+                <th>Bid Amount</th>
+                <!-- Add other necessary headers -->
             </tr>
-        <% } %>
-    </table>
+            <c:forEach items="${bids}" var="bid">
+                <tr>
+                    <td>${bid.id}</td>
+                    <td>${bid.itemId}</td>
+                    <td>${bid.userId}</td>
+                    <td>${bid.bidAmount}</td>
+                    <!-- Add other necessary fields -->
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+    <c:if test="${empty bids}">
+        <p>No bids available.</p>
+    </c:if>
 </body>
-
 </html>

@@ -14,6 +14,7 @@ public interface GenericDaoI <T> extends Serializable {
 
     void delete(Class<?> entityClass, Long id);
 
-    
+    T fetch(Class<T> entityClass, Long id);
+
 
 }

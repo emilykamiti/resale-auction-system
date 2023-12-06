@@ -13,7 +13,7 @@ public class AuthBean implements AuthBeanI, Serializable {
     public User authenticate(User loginUser) throws SQLException {
 
         PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
-            .prepareStatement("select id,username from users where username=? and password=? limit 1");
+                .prepareStatement("select id,username from users where username=? and password=? limit 1");
         sqlStmt.setString(1, loginUser.getUsername());
         sqlStmt.setString(2, loginUser.getPassword());
 
@@ -21,7 +21,7 @@ public class AuthBean implements AuthBeanI, Serializable {
 
         User user = new User();
 
-        while (result.next()){
+        while (result.next()) {
             user.setId(result.getLong("id"));
             user.setUsername(result.getString("username"));
         }
