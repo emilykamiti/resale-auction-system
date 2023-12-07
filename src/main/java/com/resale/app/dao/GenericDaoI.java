@@ -1,20 +1,20 @@
-
 package com.resale.app.dao;
 
+
+import javax.persistence.EntityManager;
 import java.io.Serializable;
 import java.util.List;
 
 public interface GenericDaoI <T> extends Serializable {
 
-   
+    List<T> list(T entity);
 
-    List<T> list(Class<?> entity);
-    
     void addOrUpdate(T entity);
 
-    void delete(Class<?> entityClass, Long id);
+    void delete(T entity);
 
-    T fetch(Class<T> entityClass, Long id);
+    EntityManager getEm();
 
+    void setEm(EntityManager em);
 
 }

@@ -1,36 +1,46 @@
 package com.resale.app.bean;
 
-
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import com.resale.app.dao.GenericDao;
 import com.resale.app.dao.GenericDaoI;
 
-public  abstract class GenericBean<T> implements GenericBeanI<T>{
+public abstract class GenericBean<T> implements GenericBeanI<T> {
 
-     private final GenericDaoI<T> genericDao = new GenericDao<>();
+    @PersistenceContext
+    private EntityManager em;
 
-    @SuppressWarnings({"unchecked","rawtypes"})
+    @Inject
+    private GenericDaoI<T> genericDao;
+
     @Override
-    public List<T> list(Class<?> entity) {
+    public List<T> list(T entity) {
+        genericDao.setEm(em);
         return genericDao.list(entity);
 
-    }
-    @Override
-    public T fetchItem(Class<T> entityClass, Long id) { 
-        return genericDao.fetch(entityClass, id);
     }
 
     @Override
     public void addOrUpdate(T entity) {
-
+        genericDao.setEm(em);
         genericDao.addOrUpdate(entity);
 
     }
 
-    public GenericDao<T> getDao(){
+    @Override
+    public void delete(T entity) {
+
+    }
+
+    public GenericDao<T> getDao() {
+        genericDao.setEm(em);
         return (GenericDao<T>) genericDao;
     }
 
 }
+
+

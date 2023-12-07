@@ -1,7 +1,12 @@
 package com.resale.app.bean;
 
-import com.resale.app.model.entity.Item;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 
-public class  BidBean extends GenericBean<Item> implements BidBeanI {
+import com.resale.app.model.entity.Bid;
+
+@Remote
+@Stateless
+public class  BidBean extends GenericBean<Bid> implements BidBeanI {
     
 }

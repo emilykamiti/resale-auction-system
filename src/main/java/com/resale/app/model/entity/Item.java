@@ -3,32 +3,37 @@ package com.resale.app.model.entity;
 import com.resale.app.view.helper.HtmlForm;
 import com.resale.app.view.helper.HtmlFormField;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.resale.app.view.helper.HtmlCrdRender;
 import com.resale.app.view.helper.HtmlTableColHeader;
-import com.resale.database.helper.DbTable;
 import com.resale.database.helper.DbTableColumn;
 
-@DbTable(name = "items")
+@Entity
+@Table(name = "items")
 @HtmlForm(label = "Item", url = "./item")
 public class Item extends BaseEntity {
 
     @DbTableColumn(name = "name")
-    @HtmlTableColHeader(header = "Name")
+    @HtmlTableColHeader(header = " Item Name")
     private String itemName;
 
-    @DbTableColumn(name = "type")
-    @HtmlCrdRender(label = "type")
-    @HtmlFormField(label = "type")
-    @HtmlTableColHeader(header = "Item Type")
-    private ItemType type;
+    @DbTableColumn(name = "description")
+    @HtmlFormField(label = "Description")
+    @HtmlTableColHeader(header = "Description")
+    private String description;
 
-    @DbTableColumn(name = "price")
+    @Column(name = "price")
     @HtmlCrdRender(label = "price")
     @HtmlFormField(label = "price")
     @HtmlTableColHeader(header = "Item Price")
-    private double price;
+    private BigDecimal price;
 
-    @DbTableColumn(name = "image")
+    @Column(name = "image")
     @HtmlCrdRender(label = "image")
     @HtmlFormField(label = "image")
     private String image; 
@@ -43,19 +48,18 @@ public class Item extends BaseEntity {
         this.itemName = itemName;
     }
 
-    public ItemType getType() {
-        return type;
+    public String getDescription() {
+        return description;
     }
 
-    public void setType(ItemType type) {
-        this.type = type;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -67,15 +71,11 @@ public class Item extends BaseEntity {
         this.image = image;
     }
 
-    public Item(String itemName, ItemType type, double price, String image) {
+    public Item(String itemName, ItemType type, BigDecimal price, String image) {
         this.itemName = itemName;
-        this.type = type;
         this.price = price;
         this.image = image;
     }
 
-    @Override
-    public String toString() {
-        return "Item [itemName=" + itemName + ", type=" + type + ", price=" + price + ", image=" + image + "]";
-    }
+    
 }

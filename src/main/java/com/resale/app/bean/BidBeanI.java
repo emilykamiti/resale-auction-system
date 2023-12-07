@@ -1,8 +1,8 @@
 
 package com.resale.app.bean;
 
-import com.resale.app.model.entity.Item;
+import com.resale.app.model.entity.Bid;
 
-public interface BidBeanI  extends GenericBeanI<Item> {
-   
+public interface BidBeanI extends GenericBeanI<Bid> {
+
 }

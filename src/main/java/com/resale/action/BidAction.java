@@ -1,7 +1,7 @@
 package com.resale.action;
 
 import com.resale.app.model.entity.Bid;
-import com.resale.app.model.entity.Item;
+import com.resale.app.bean.BidBeanI;
 
 import java.io.IOException;
 import javax.ejb.EJB;
@@ -10,33 +10,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.resale.app.bean.ItemBeanI;
-import com.resale.database.MysqlDatabase;
-import java.util.UUID;
 
-@WebServlet("/bidaction")
+@WebServlet("/bids")
 public class BidAction extends BaseAction {
+
     @EJB
-    ItemBeanI itemBean;
+    private BidBeanI bidBean;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        renderPage(req, resp, 4, Bid.class, bidBean.list(new Bid()));
 
-        long itemId = Long.parseLong(request.getParameter("itemId"));
+    }
 
-        Item item = itemBean.fetchItem(Item.class, itemId);
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        bidBean.addOrUpdate(serializeForm(Bid.class, req.getParameterMap()));
 
-        String trackId = UUID.randomUUID().toString();
+        resp.sendRedirect("./bids");
 
-        Bid newBid = new Bid();
-        newBid.setItemId(itemId);
-        newBid.setTrackID(trackId);
-        newBid.setBidAmount(bidAmount);
-        MysqlDatabase.insert(newBid);
-
-        request.setAttribute("confirmationMessage", "Bid made successfully!");
-        request.setAttribute("trackId", trackId);
-
-        request.getRequestDispatcher("./home").forward(request, response);
     }
 }

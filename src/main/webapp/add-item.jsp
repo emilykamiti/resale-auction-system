@@ -60,30 +60,25 @@
             <div class="card-body">
                 <form action="./item" method="post">
                     <div class="form-group">
-                        <label for="name">Item Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <label for="itemName">Item Name</label>
+                        <input type="text" class="form-control" id="itemName" name="itemName" required>
                     </div>
-                <div class="form-group">
-                    <label for="type">Item Type</label>
-                    <select class="form-control" id="type" name="type" required>
-                        <option value="HOME_ACCESSORIES">Home Accessories</option>
-                        <option value="LUXURY">Luxury</option>
-                        <option value="FURNITURE">Furniture</option>
-                        <option value="CARS">Cars</option>
-                    </select>
-                </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" required>
+                    </div>
                     <div class="form-group">
                         <label for="price">Item Price</label>
                         <input type="text" class="form-control" id="price" name="price" required>
                     </div>
-                <div class="form-group">
-                    <label for="image">Item Image URL</label>
-                    <input type="text" class="form-control" id="image" name="image" required>
-                </div>
+                    <div class="form-group">
+                        <label for="image">Item Image URL</label>
+                        <input type="text" class="form-control" id="image" name="image" required>
+                    </div>
                     <button type="submit" class="btn btn-primary" name="addItem">Add Item</button>
                 </form>
             </div>
-            <br/>
         </div>
-    </body>
-    </html>
+    </div>
+</body>
+</html>
