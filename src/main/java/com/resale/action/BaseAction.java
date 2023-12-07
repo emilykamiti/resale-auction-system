@@ -1,6 +1,5 @@
 package com.resale.action;
 
-
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtils;
@@ -10,6 +9,7 @@ import org.apache.commons.beanutils.converters.DateConverter;
 import org.apache.commons.lang3.StringUtils;
 
 import com.resale.app.utility.EnumConverter;
+import com.resale.app.view.helper.HtmlCardRender;
 import com.resale.app.view.helper.HtmlCmpRender;
 
 import javax.servlet.RequestDispatcher;
@@ -34,14 +34,15 @@ public class BaseAction extends HttpServlet {
         try {
             clazzInstance = (T) clazz.getDeclaredConstructor().newInstance();
 
-            DateConverter converter = new DateConverter( null );
+            DateConverter converter = new DateConverter(null);
             converter.setPattern("yyyy-MM-dd");
             ConvertUtils.register(converter, Date.class);
             ConvertUtils.register(new EnumConverter(), Date.class);
 
             BeanUtils.populate(clazzInstance, requestMap);
 
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e ) {
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException
+                | InstantiationException e) {
             throw new RuntimeException(e);
         }
 
@@ -69,24 +70,25 @@ public class BaseAction extends HttpServlet {
 
             ConvertUtils.register(new BigDecimalConverter(), BigDecimal.class);
 
-            DateConverter converter = new DateConverter( null );
+            DateConverter converter = new DateConverter(null);
             converter.setPattern("yyyy-MM-dd");
             ConvertUtils.register(converter, Date.class);
 
             beanUtilsBean.populate(clazzInstance, requestMap);
 
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e ) {
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException
+                | InstantiationException e) {
             throw new RuntimeException(e);
         }
 
         return clazzInstance;
     }
 
-    public void renderPage(HttpServletRequest request, HttpServletResponse response, int activeMenu,
-        Class<?> entity, List<?> entityList)
+    public void renderPage(HttpServletRequest request, HttpServletResponse response, int activeMenu, Class<?> entity, List<?> entityList)
             throws ServletException, IOException {
 
         request.setAttribute("activeMenu", activeMenu);
+        // request.setAttribute("content", content);
 
         if (StringUtils.trimToEmpty(request.getParameter("action")).equals("add"))
             request.setAttribute("content", HtmlCmpRender.form(entity));
@@ -96,4 +98,16 @@ public class BaseAction extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("./app/index.jsp");
         dispatcher.forward(request, response);
     }
+
+    public void renderCard(HttpServletRequest request, HttpServletResponse response, int activeMenu, String content)
+            throws ServletException, IOException {
+
+        request.setAttribute("activeMenu", activeMenu);
+        request.setAttribute("content", content);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("./app/index.jsp");
+        dispatcher.forward(request, response);
+    }
+    
+
 }

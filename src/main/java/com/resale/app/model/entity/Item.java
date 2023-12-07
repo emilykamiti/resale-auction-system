@@ -2,6 +2,7 @@ package com.resale.app.model.entity;
 
 import com.resale.app.view.helper.HtmlForm;
 import com.resale.app.view.helper.HtmlFormField;
+import com.resale.app.view.helper.HtmlTable;
 
 import java.math.BigDecimal;
 
@@ -9,34 +10,38 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.resale.app.view.helper.HtmlCrdRender;
+import com.resale.app.view.helper.HtmlCards;
 import com.resale.app.view.helper.HtmlTableColHeader;
-import com.resale.database.helper.DbTableColumn;
 
 @Entity
 @Table(name = "items")
+@HtmlTable(name = "items", addUrl = "./item/add")
 @HtmlForm(label = "Item", url = "./item")
 public class Item extends BaseEntity {
 
-    @DbTableColumn(name = "name")
+    @Column(name = "Item Name")
+    @HtmlCards(label = "Item Name")
     @HtmlTableColHeader(header = " Item Name")
+     @HtmlFormField(label = "Item Name", required = true)
     private String itemName;
 
-    @DbTableColumn(name = "description")
-    @HtmlFormField(label = "Description")
+    @Column(name = "Description")
+    @HtmlFormField(label = "Description", required = true)
     @HtmlTableColHeader(header = "Description")
     private String description;
 
-    @Column(name = "price")
-    @HtmlCrdRender(label = "price")
-    @HtmlFormField(label = "price")
+    @Column(name = "Item Price")
+    @HtmlCards(label = "Item price")
+    @HtmlFormField(label = "Price", required = true)
     @HtmlTableColHeader(header = "Item Price")
     private BigDecimal price;
 
     @Column(name = "image")
-    @HtmlCrdRender(label = "image")
-    @HtmlFormField(label = "image")
-    private String image; 
+    @HtmlCards(label = "image")
+    @HtmlTableColHeader(header = "image")
+    @HtmlFormField(label = "image", required = true)
+    private String image;
+
     public Item() {
     }
 
@@ -55,6 +60,7 @@ public class Item extends BaseEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public BigDecimal getPrice() {
         return price;
     }
@@ -77,5 +83,4 @@ public class Item extends BaseEntity {
         this.image = image;
     }
 
-    
 }

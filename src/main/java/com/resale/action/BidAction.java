@@ -18,7 +18,9 @@ public class BidAction extends BaseAction {
     private BidBeanI bidBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        renderPage(req, resp, 4, Bid.class, bidBean.list(new Bid()));
+        
+        
+        renderPage(req, resp, 4, null, bidBean.list(new Bid()));
 
     }
 

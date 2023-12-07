@@ -1,8 +1,6 @@
 package com.resale.app.dao;
 
 
-
-
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Column;
@@ -40,6 +38,7 @@ import java.util.*;
             Column column = field.getAnnotation(Column.class);
             field.setAccessible(true);
 
+              System.out.println("Executing query: " + jpql);
             try {
                 if (field.get(entity) != null) {
                     String colName = StringUtils.isEmpty(column.name()) ? field.getName() : column.name();

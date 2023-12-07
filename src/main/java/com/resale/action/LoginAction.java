@@ -6,7 +6,6 @@ import com.resale.app.bean.AuthBeanI;
 import com.resale.app.model.entity.User;
 
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +20,6 @@ public class LoginAction extends BaseAction {
 
     @EJB
     AuthBeanI authBean;
-
-    @Inject
-    private double buildNumber;
 
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -47,10 +43,7 @@ public class LoginAction extends BaseAction {
 
                 httpSession.setAttribute("loggedInId", new Date().getTime() + "");
                 httpSession.setAttribute("username", userDetails.getUsername());
-                System.out.println("The build number is " + buildNumber);
-
-                
-
+               
                 resp.sendRedirect("./home");
 
             }
