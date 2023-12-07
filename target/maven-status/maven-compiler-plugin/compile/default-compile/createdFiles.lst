@@ -7,7 +7,6 @@ com/resale/action/ShowBid.class
 com/resale/app/view/helper/HtmlMenuToolbar.class
 com/resale/app/view/helper/HtmlCards.class
 com/resale/app/view/helper/HtmlMenu.class
-com/resale/app/view/helper/HtmlCrdRender.class
 com/resale/app/utility/BuildInfo.class
 com/resale/app/dao/GenericDaoI.class
 com/resale/action/LandingAction.class
@@ -55,5 +54,6 @@ com/resale/app/dao/GenericDao.class
 com/resale/app/model/entity/Bid.class
 com/resale/app/model/entity/BaseEntity.class
 com/resale/action/BidAction.class
+com/resale/app/view/helper/HtmlCardRender.class
 com/resale/app/bean/UserBean.class
 com/resale/database/helper/DbTableId.class

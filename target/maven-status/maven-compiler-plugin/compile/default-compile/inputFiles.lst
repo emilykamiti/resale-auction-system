@@ -1,6 +1,7 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/BaseEntity.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/TrackAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/LandingAction.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlCardRender.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlCmpRender.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/HomeAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/UserAction.java
@@ -39,7 +40,6 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/ShowBid.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/utility/EncryptSha256.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlMenuToolbar.java
-/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlCrdRender.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/AuditLog.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/database/helper/DbTable.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlMenu.java

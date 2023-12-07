@@ -17,7 +17,6 @@ public class ItemAction extends BaseAction {
     @EJB
     private ItemBeanI itemBean;
 
- 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
            System.out.print("add item.................form");
         req.getRequestDispatcher("./add-item.jsp").forward(req, resp);
