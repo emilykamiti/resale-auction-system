@@ -18,10 +18,8 @@ public class ItemAction extends BaseAction {
     private ItemBeanI itemBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-           System.out.print("add item.................form");
-        req.getRequestDispatcher("./add-item.jsp").forward(req, resp);
+    renderPage(req, resp, 4, Item.class, itemBean.list(new Item()));
     }
-
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     itemBean.addOrUpdate(serializeForm(Item.class, req.getParameterMap()));
 

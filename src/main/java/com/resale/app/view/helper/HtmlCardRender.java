@@ -33,8 +33,9 @@ public class HtmlCardRender {
                 HtmlCards annotation = field.getAnnotation(HtmlCards.class);
                 try {
                     field.setAccessible(true);
-                    if (annotation.label().equals("image")) {
-                        cardBuilder.append("<img class=\"card-image\" src='" + field.get(model) + "' alt='item image'>");
+                    if (annotation.label().equals("ItemImage")) {
+                        cardBuilder
+                                .append("<img class=\"card-image\" src='" + field.get(model) + "' alt='ItemImage'>");
                     } else {
                         cardBuilder.append("<h3 class=\"card-title\">").append(annotation.label())
                                 .append(field.get(model)).append("</h3>");
@@ -73,7 +74,8 @@ public class HtmlCardRender {
 
         while (currentClass != null) {
             try {
-                java.lang.reflect.Method method = currentClass.getDeclaredMethod("get" + StringUtils.capitalize(fieldName));
+                java.lang.reflect.Method method = currentClass
+                        .getDeclaredMethod("get" + StringUtils.capitalize(fieldName));
                 Object value = method.invoke(model);
                 return value != null ? value.toString() : "";
             } catch (NoSuchMethodException | IllegalAccessException | java.lang.reflect.InvocationTargetException e) {

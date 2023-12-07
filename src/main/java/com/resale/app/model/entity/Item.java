@@ -15,32 +15,32 @@ import com.resale.app.view.helper.HtmlTableColHeader;
 
 @Entity
 @Table(name = "items")
-@HtmlTable(name = "items", addUrl = "./item/add")
+@HtmlTable(addUrl = "./item?action=add")
 @HtmlForm(label = "Item", url = "./item")
 public class Item extends BaseEntity {
 
-    @Column(name = "Item Name")
-    @HtmlCards(label = "Item Name")
-    @HtmlTableColHeader(header = " Item Name")
-     @HtmlFormField(label = "Item Name", required = true)
+    @Column(name = "ItemName")
+    @HtmlCards(label = "")
+    @HtmlTableColHeader(header = " ItemName")
+    @HtmlFormField(label = "Item Name", required = true)
     private String itemName;
 
-    @Column(name = "Description")
+    @Column(name = "ItmeDescription")
     @HtmlFormField(label = "Description", required = true)
-    @HtmlTableColHeader(header = "Description")
+    @HtmlTableColHeader(header = "ItemDescription")
     private String description;
 
-    @Column(name = "Item Price")
-    @HtmlCards(label = "Item price")
+    @Column(name = "ItemPrice")
+    @HtmlCards(label = "Price: ")
     @HtmlFormField(label = "Price", required = true)
-    @HtmlTableColHeader(header = "Item Price")
+    @HtmlTableColHeader(header = "ItemPrice")
     private BigDecimal price;
 
-    @Column(name = "image")
-    @HtmlCards(label = "image")
-    @HtmlTableColHeader(header = "image")
-    @HtmlFormField(label = "image", required = true)
-    private String image;
+    @Column(name = "ItemImage")
+    @HtmlCards(label = "ItemImage")
+    @HtmlTableColHeader(header = "ItemImage")
+    @HtmlFormField(label = "ItemImage", required = true)
+    private String ItemImage;
 
     public Item() {
     }
@@ -70,17 +70,17 @@ public class Item extends BaseEntity {
     }
 
     public String getImage() {
-        return image;
+        return ItemImage;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImage(String ItemImage) {
+        this.ItemImage = ItemImage;
     }
 
-    public Item(String itemName, ItemType type, BigDecimal price, String image) {
+    public Item(String itemName, ItemType type, BigDecimal price, String ItemImage) {
         this.itemName = itemName;
         this.price = price;
-        this.image = image;
+        this.ItemImage = ItemImage;
     }
 
 }
