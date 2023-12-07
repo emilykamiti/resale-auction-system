@@ -15,14 +15,14 @@ import com.resale.app.view.helper.HtmlTableColHeader;
 
 @Entity
 @Table(name = "items")
-@HtmlTable(name = "items", addUrl = "./item/add")
+@HtmlTable(addUrl = "./item?action=add")
 @HtmlForm(label = "Item", url = "./item")
 public class Item extends BaseEntity {
 
-    @Column(name = "Item Name")
+    @Column(name = "ItemName")
     @HtmlCards(label = "Item Name")
     @HtmlTableColHeader(header = " Item Name")
-     @HtmlFormField(label = "Item Name", required = true)
+    @HtmlFormField(label = "Item Name", required = true)
     private String itemName;
 
     @Column(name = "Description")
@@ -30,7 +30,7 @@ public class Item extends BaseEntity {
     @HtmlTableColHeader(header = "Description")
     private String description;
 
-    @Column(name = "Item Price")
+    @Column(name = "ItemPrice")
     @HtmlCards(label = "Item price")
     @HtmlFormField(label = "Price", required = true)
     @HtmlTableColHeader(header = "Item Price")

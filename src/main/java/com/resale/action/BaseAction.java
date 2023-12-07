@@ -88,7 +88,6 @@ public class BaseAction extends HttpServlet {
             throws ServletException, IOException {
 
         request.setAttribute("activeMenu", activeMenu);
-        // request.setAttribute("content", content);
 
         if (StringUtils.trimToEmpty(request.getParameter("action")).equals("add"))
             request.setAttribute("content", HtmlCmpRender.form(entity));
