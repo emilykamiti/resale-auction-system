@@ -1,31 +1,48 @@
 package com.resale.app.bean;
 
-import java.io.Serializable;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 
+import com.resale.app.model.entity.AuditLog;
 import com.resale.app.model.entity.User;
-import com.resale.database.MysqlDatabase;
+import com.resale.app.utility.EncryptText;
 
-public class AuthBean implements AuthBeanI, Serializable {
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
 
-    public User authenticate(User loginUser) throws SQLException {
+@Remote
+@Stateless
+public class AuthBean extends GenericBean<User> implements AuthBeanI, Serializable {
 
-        PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
-                .prepareStatement("select id,username from users where username=? and password=? limit 1");
-        sqlStmt.setString(1, loginUser.getUsername());
-        sqlStmt.setString(2, loginUser.getPassword());
+    @Inject
+    private EncryptText encryptText;
 
-        ResultSet result = sqlStmt.executeQuery();
+    @Inject
+    private Event<AuditLog> logger;
 
-        User user = new User();
+    public User authenticate(User loginUser) {
 
-        while (result.next()) {
-            user.setId(result.getLong("id"));
-            user.setUsername(result.getString("username"));
+        try {
+            loginUser.setPassword(encryptText.encrypt(loginUser.getPassword()));
+        } catch (Exception ex){
+            throw new RuntimeException(ex.getMessage());
         }
 
-        return user;
+        List<User> users = list(loginUser);
+
+        if (users.isEmpty() || users.get(0) == null)
+            throw new RuntimeException("Invalid user!!");
+
+        AuditLog log = new AuditLog();
+        log.setLogDetails("User logged in at " + DateFormat.getDateTimeInstance().format(new Date())
+            + ", " + users.get(0).getUsername());
+
+        logger.fire(log);
+
+        return users.get(0);
     }
 }

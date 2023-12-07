@@ -1,16 +1,18 @@
 package com.resale.app.model.entity;
 
-
-
 import java.io.Serializable;
 
-import com.resale.database.helper.DbTableColumn;
-import com.resale.database.helper.DbTableId;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-public class BaseEntity implements Serializable {
 
-    @DbTableId
-    @DbTableColumn(name = "id", definition = "int")
+@MappedSuperclass
+public abstract class BaseEntity implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
     public Long getId() {

@@ -1,12 +1,10 @@
 package com.resale.app.bean;
 
-
-
 import java.sql.SQLException;
 
 import com.resale.app.model.entity.User;
 
-public interface UserBeanI {
+public interface UserBeanI extends GenericBeanI<User>{
 
     boolean register(User user) throws SQLException;
 

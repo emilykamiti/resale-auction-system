@@ -1,6 +1,5 @@
 package com.resale.action;
 
-import com.resale.app.bean.ItemBean;
 import com.resale.app.bean.ItemBeanI;
 import com.resale.app.model.entity.Item;
 import com.resale.app.view.helper.HtmlCards;
@@ -22,9 +21,11 @@ public class HomeAction extends BaseAction {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Item> items = itemBean.list(Item.class);
+        Item item = new Item();
+        List<Item> items = itemBean.list(item);
         String commodity = HtmlCards.generateCards(items);
-        renderPage(req, resp, 3, commodity);
+        req.setAttribute("commodity", commodity);
+        renderPage(req, resp, 3, Item.class, items);
 
     }
 }
