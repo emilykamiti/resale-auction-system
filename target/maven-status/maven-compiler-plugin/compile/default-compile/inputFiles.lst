@@ -17,7 +17,6 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/dao/GenericDaoI.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/EmailBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/Bid.java
-/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/database/helper/DbTableColumn.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlForm.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/userbean/LoginForm.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/ItemBean.java
@@ -33,17 +32,13 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/Payment.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/UserBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/ItemBeanI.java
-/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/database/MysqlDatabase.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/LogOutAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/ItemType.java
-/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/database/Database.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/ShowBid.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/utility/EncryptSha256.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlMenuToolbar.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/AuditLog.java
-/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/database/helper/DbTable.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlMenu.java
-/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/database/helper/DbTableId.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/PaymentAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/ItemAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/MenuLinkStatus.java

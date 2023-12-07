@@ -20,27 +20,27 @@ import com.resale.app.view.helper.HtmlTableColHeader;
 public class Item extends BaseEntity {
 
     @Column(name = "ItemName")
-    @HtmlCards(label = "")
-    @HtmlTableColHeader(header = " ItemName")
+    @HtmlCards(label = "Item Name")
+    @HtmlTableColHeader(header = " Item Name")
     @HtmlFormField(label = "Item Name", required = true)
     private String itemName;
 
-    @Column(name = "ItmeDescription")
+    @Column(name = "Description")
     @HtmlFormField(label = "Description", required = true)
-    @HtmlTableColHeader(header = "ItemDescription")
+    @HtmlTableColHeader(header = "Description")
     private String description;
 
     @Column(name = "ItemPrice")
-    @HtmlCards(label = "Price: ")
+    @HtmlCards(label = "Item price")
     @HtmlFormField(label = "Price", required = true)
-    @HtmlTableColHeader(header = "ItemPrice")
+    @HtmlTableColHeader(header = "Item Price")
     private BigDecimal price;
 
-    @Column(name = "ItemImage")
-    @HtmlCards(label = "ItemImage")
-    @HtmlTableColHeader(header = "ItemImage")
-    @HtmlFormField(label = "ItemImage", required = true)
-    private String ItemImage;
+    @Column(name = "image")
+    @HtmlCards(label = "image")
+    @HtmlTableColHeader(header = "image")
+    @HtmlFormField(label = "image", required = true)
+    private String image;
 
     public Item() {
     }
@@ -70,17 +70,17 @@ public class Item extends BaseEntity {
     }
 
     public String getImage() {
-        return ItemImage;
+        return image;
     }
 
-    public void setImage(String ItemImage) {
-        this.ItemImage = ItemImage;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public Item(String itemName, ItemType type, BigDecimal price, String ItemImage) {
+    public Item(String itemName, ItemType type, BigDecimal price, String image) {
         this.itemName = itemName;
         this.price = price;
-        this.ItemImage = ItemImage;
+        this.image = image;
     }
 
 }

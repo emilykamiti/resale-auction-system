@@ -121,6 +121,8 @@ public class HtmlCmpRender implements Serializable {
                         .append(">");
 
                 for (Object enumValue : field.getType().getEnumConstants()) {
+                    // System.out.println(enumValue);
+
                     try {
                         Method method = field.getType().getMethod("getName");
                         htmlForm.append("htmlForm.append(<option value=\"")
@@ -133,25 +135,7 @@ public class HtmlCmpRender implements Serializable {
 
                 htmlForm.append("</select>");
 
-            } /*
-               * (Object object : list){
-               * //System.out.println(enumValue);
-               * 
-               * try {
-               * Method method = field.getType().getMethod("getName");
-               * htmlForm.append("htmlForm.append(<option value=\"")
-               * .append(object.getId()).append("\">")
-               * .append(object.getName).append("</option>)");
-               * } catch (NoSuchMethodException | IllegalAccessException |
-               * InvocationTargetException e) {
-               * throw new RuntimeException(e);
-               * }
-               * }
-               * 
-               * htmlForm.append("</select>");
-               * 
-               * }
-               */ else {
+            } else {
                 htmlForm.append("<input type=\"")
                         .append(formField.type())
                         .append("\" id=\"").append(ifBlank(formField.id(), fieldName))

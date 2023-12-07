@@ -33,9 +33,9 @@ public class HtmlCardRender {
                 HtmlCards annotation = field.getAnnotation(HtmlCards.class);
                 try {
                     field.setAccessible(true);
-                    if (annotation.label().equals("ItemImage")) {
+                    if (annotation.label().equals("image")) {
                         cardBuilder
-                                .append("<img class=\"card-image\" src='" + field.get(model) + "' alt='ItemImage'>");
+                                .append("<img class=\"card-image\" src='" + field.get(model) + "' alt='item image'>");
                     } else {
                         cardBuilder.append("<h3 class=\"card-title\">").append(annotation.label())
                                 .append(field.get(model)).append("</h3>");
