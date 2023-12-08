@@ -6,32 +6,27 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import com.resale.app.view.helper.HtmlTable;
-import com.resale.app.view.helper.HtmlTableColHeader;
 
 @Entity
 @Table(name = "bids")
-@HtmlTable(addUrl = "./bids?action=add")
 public class Bid extends BaseEntity {
 
     @Column(name = "BidderName")
-    @HtmlTableColHeader(header = "BidderName")
     private String bidderName;
 
     @Column(name = "BidTime")
-    @HtmlTableColHeader(header = "Bid Time")
     private LocalDateTime bidTime;
 
     @Column(name = "bidamount")
-    @HtmlTableColHeader(header = "bidamount")
     private BigDecimal bidAmount;
 
     public Bid() {
     }
 
-    @Override
-    public String toString() {
-        return "Bid [bidderName=" + bidderName + ", bidTime=" + bidTime + ", bidAmount=" + bidAmount + "]";
+    public Bid(String bidderName, BigDecimal bidAmount ) {
+        this.bidderName = bidderName;
+        this.bidTime = LocalDateTime.now(); 
+        this.bidAmount = bidAmount;
     }
 
     public String getBidderName() {
@@ -58,10 +53,8 @@ public class Bid extends BaseEntity {
         this.bidAmount = bidAmount;
     }
 
-    public Bid(String bidderName, LocalDateTime bidTime, BigDecimal bidAmount) {
-        this.bidderName = bidderName;
-        this.bidTime = bidTime;
-        this.bidAmount = bidAmount;
+    @Override
+    public String toString() {
+        return "Bid [bidderName=" + bidderName + ", bidTime=" + bidTime + ", bidAmount=" + bidAmount + "]";
     }
-
 }
