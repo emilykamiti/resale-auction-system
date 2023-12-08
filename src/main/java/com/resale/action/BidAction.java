@@ -10,24 +10,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet("/bids")
 public class BidAction extends BaseAction {
 
     @EJB
     private BidBeanI bidBean;
-
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        
-        renderPage(req, resp, 4, null, bidBean.list(new Bid()));
+        renderPage(req, resp, 1,  Bid.class, bidBean.list(new Bid(null, null, null)));
 
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        bidBean.addOrUpdate(serializeForm(Bid.class, req.getParameterMap()));
+           bidBean.addOrUpdate(serializeForm(Bid.class, req.getParameterMap()));
 
-        resp.sendRedirect("./bids");
+        resp.sendRedirect("./biditem.jsp");
 
     }
 }

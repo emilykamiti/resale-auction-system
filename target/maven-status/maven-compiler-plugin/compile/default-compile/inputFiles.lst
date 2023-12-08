@@ -20,6 +20,7 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlForm.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/userbean/LoginForm.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/ItemBean.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/BidStatus.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/Type.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/BidBeanI.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/AuthBean.java

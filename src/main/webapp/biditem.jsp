@@ -39,48 +39,27 @@ x<%@ page contentType="text/html;charset=UTF-8" language="java" %>
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2 class="form-title">MAKE BID</h2>
-        
-        <% 
-            String confirmationMessage = (String) request.getAttribute("confirmationMessage");
-            String trackId = (String) request.getAttribute("trackId");
-        %>
-       
-        <form action="./bidaction" method="post">
-            <input type="hidden" id="itemId" name="itemId" value="<%= request.getParameter("id") %>">
-        
-            <label for="bidAmount">Amount to bid:</label>
-            <input type="number" id="bidAmount" name="bidAmount" required><br>
-            
-            <button type="submit" name="bid">Make a bid</button>
-            <a href="./home" class="homepage-link">Go to homepage</a>
-        </form>
-        
-        <% if (confirmationMessage != null && !confirmationMessage.isEmpty()) { %>
-        <div class="confirmation-message-container">
-            <div class="confirmation-message">
-                <%= confirmationMessage %>
-                <% if (trackId != null) { %>
-                    <br>
-                    Track ID: <%= trackId %>
-                <% } %>
-            </div>
+<div class="container">
+    <h2 class="form-title">MAKE BID</h2>
+   
+    <<form action="./bids" method="post">
+    <input type="hidden" id="itemId" name="itemId" value="<%= request.getParameter("id") %>">
+    
+    <label for="bidderName">Bidder Name:</label>
+    <input type="text" id="bidderName" name="bidderName" required><br>
+    
+    <!-- <label for="bidTime">Bid Time:</label>
+    <input type="datetime-local" id="bidTime" name="bidTime" required><br>
+     -->
+    <label for="bidAmount">Amount to bid:</label>
+    <input type="number" id="bidAmount" name="bidAmount" required><br>
+    
+    <button type="submit" name="bid">Make a bid</button>
+    <a href="./home" class="homepage-link">Go to homepage</a>
+</form>
+
         </div>
-        <% } %>
-        
-        <% 
-        List<Bid> bids = (List<Bid>) request.getAttribute("bids");
-        if (bids != null && !bids.isEmpty()) { %>
-        <div class="track-ids">
-            <% for (Bid bid : bids) { %>
-            <div class="track-id">
-                Track ID: <%= bid.getTrackID() %>
-            </div>
-            <% } %>
-        </div>
-        <% } %>
-        
     </div>
 </body>
-</html>
+</head>
+            </html>

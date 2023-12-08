@@ -9,7 +9,7 @@ import org.apache.commons.beanutils.converters.DateConverter;
 import org.apache.commons.lang3.StringUtils;
 
 import com.resale.app.utility.EnumConverter;
-import com.resale.app.view.helper.HtmlCardRender;
+
 import com.resale.app.view.helper.HtmlCmpRender;
 
 import javax.servlet.RequestDispatcher;
@@ -84,7 +84,8 @@ public class BaseAction extends HttpServlet {
         return clazzInstance;
     }
 
-    public void renderPage(HttpServletRequest request, HttpServletResponse response, int activeMenu, Class<?> entity, List<?> entityList)
+    public void renderPage(HttpServletRequest request, HttpServletResponse response, int activeMenu, Class<?> entity,
+            List<?> entityList)
             throws ServletException, IOException {
 
         request.setAttribute("activeMenu", activeMenu);
@@ -107,6 +108,5 @@ public class BaseAction extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("./app/index.jsp");
         dispatcher.forward(request, response);
     }
-    
 
 }
