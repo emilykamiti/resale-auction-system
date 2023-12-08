@@ -42,14 +42,28 @@ public class Item extends BaseEntity {
     @HtmlFormField(label = "image", required = true)
     private String image;
 
+    @Column(name = "BidDuration")
+    @HtmlCards(label = "BidDuration: ")
+    @HtmlTableColHeader(header = "Duration")
+    @HtmlFormField(label = "Duration", required = true)
+    private String bidDuration;
+
     public Item() {
     }
 
-    public String getitemName() {
+    public Item(String itemName, String description, BigDecimal price, String image, String bidDuration) {
+        this.itemName = itemName;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.bidDuration = bidDuration;
+    }
+
+    public String getItemName() {
         return itemName;
     }
 
-    public void setitemName(String itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
@@ -77,10 +91,12 @@ public class Item extends BaseEntity {
         this.image = image;
     }
 
-    public Item(String itemName, ItemType type, BigDecimal price, String image) {
-        this.itemName = itemName;
-        this.price = price;
-        this.image = image;
+    public String getBidDuration() {
+        return bidDuration;
+    }
+
+    public void setBidDuration(String bidDuration) {
+        this.bidDuration = bidDuration;
     }
 
 }

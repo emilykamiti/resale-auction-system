@@ -2,6 +2,9 @@ package com.resale.app.view.helper;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.resale.app.model.entity.Bid;
+import com.resale.app.model.entity.Item;
+
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -23,9 +26,14 @@ public class HtmlCmpRender implements Serializable {
         HtmlTable htmlTable = dataClass.getAnnotation(HtmlTable.class);
 
         StringBuilder trBuilder = new StringBuilder();
-        trBuilder.append("<a class=\"link-btn-add\" href=\"")
-                .append(htmlTable.addUrl()).append("\">Add</a><br/>")
-                .append("<table><tr>");
+
+        // Add the "Add" button only if the dataClass is Item
+        if (dataClass.equals(Item.class)) {
+            trBuilder.append("<a class=\"link-btn-add\" href=\"")
+                    .append(htmlTable.addUrl()).append("\">Add</a><br/>");
+        }
+
+        trBuilder.append("<table><tr>");
 
         Field[] fields = dataClass.getDeclaredFields();
 
@@ -36,6 +44,10 @@ public class HtmlCmpRender implements Serializable {
             trBuilder.append("<th>")
                     .append(field.getAnnotation(HtmlTableColHeader.class).header())
                     .append("</th>");
+        }
+        if (dataClass.equals(Bid.class)) {
+            trBuilder.append("<th>Action</th>");
+
         }
 
         trBuilder.append("</tr>");
@@ -73,6 +85,12 @@ public class HtmlCmpRender implements Serializable {
                     }
                 }
 
+                if (dataClass.equals(Bid.class)) {
+                    trBuilder.append("<td>")
+                            .append("<button class=\"btn-accept\">Accept</button>")
+                            .append("<button class=\"btn-reject\">Reject</button>")
+                            .append("</td>");
+                }
                 trBuilder.append("<tr>");
 
             }

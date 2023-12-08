@@ -3,17 +3,25 @@ package com.resale.action;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.resale.app.bean.BidBeanI;
+import com.resale.app.model.entity.Bid;
 
-@WebServlet("/showbid")
-public class ShowBid extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/bidtable.jsp").forward(request, response);
+@WebServlet("/showbids")
+
+public class ShowBid extends BaseAction {
+
+    @EJB
+    private BidBeanI bidBean;
+
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       
+
     }
+
 }

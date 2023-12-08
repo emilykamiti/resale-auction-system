@@ -19,6 +19,6 @@ public class HomeAction extends BaseAction {
     ItemBeanI itemBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        renderCard(req, resp, 2, HtmlCardRender.generateCards( itemBean.list(new Item())));
+        renderCard(req, resp, 2, HtmlCardRender.generateCards(itemBean.list(new Item())));
     }
 }

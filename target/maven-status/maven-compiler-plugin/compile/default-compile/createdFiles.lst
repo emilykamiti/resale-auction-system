@@ -9,6 +9,7 @@ com/resale/app/view/helper/HtmlCards.class
 com/resale/app/view/helper/HtmlMenu.class
 com/resale/app/utility/BuildInfo.class
 com/resale/app/dao/GenericDaoI.class
+com/resale/app/model/entity/BidStatus.class
 com/resale/action/LandingAction.class
 com/filter/AuthFilter.class
 com/resale/app/bean/GenericBean.class

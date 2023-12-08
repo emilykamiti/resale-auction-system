@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "audit_logs")
-public class AuditLog extends BaseEntity{
+public class AuditLog extends BaseEntity {
 
     @Column(name = "log_details", columnDefinition = "longtext")
     private String logDetails;
