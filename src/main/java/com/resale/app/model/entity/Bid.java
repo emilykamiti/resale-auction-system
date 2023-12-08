@@ -7,23 +7,30 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.resale.app.view.helper.HtmlTable;
+import com.resale.app.view.helper.HtmlTableColHeader;
+
 @Entity
 @Table(name = "bids")
+@HtmlTable(addUrl = "./bids?action=add")
 public class Bid extends BaseEntity {
 
     @Column(name = "BidderName")
+    @HtmlTableColHeader(header = "Bidder Name")
     private String bidderName;
 
     @Column(name = "BidTime")
+    @HtmlTableColHeader(header = "BId Time")
     private LocalDateTime bidTime;
 
     @Column(name = "bidamount")
+    @HtmlTableColHeader(header = "Bid Amount")
     private BigDecimal bidAmount;
 
     public Bid() {
     }
 
-    public Bid(String bidderName, BigDecimal bidAmount ) {
+    public Bid(String bidderName, BigDecimal bidAmount, LocalDateTime bidTime) {
         this.bidderName = bidderName;
         this.bidTime = LocalDateTime.now(); 
         this.bidAmount = bidAmount;
