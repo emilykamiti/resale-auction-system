@@ -14,20 +14,4 @@ import com.resale.app.model.entity.Bid;
 @Stateless
 public class BidBean extends GenericBean<Bid> implements BidBeanI {
 
-    // @PersistenceContext
-    // private EntityManager entityManager;
-
-    // @Transactional
-    // public void addOrUpdateBid(Bid bid) {
-    //     setBidTimeOnPersist(bid);
-
-    //     entityManager.persist(bid);
-    // }
-
-    // private void setBidTimeOnPersist(Bid bid) {
-    //     if (bid.getBidTime() == null) {
-    //         bid.setBidTime(LocalDateTime.now());
-    //     }
-    // }
-
 }

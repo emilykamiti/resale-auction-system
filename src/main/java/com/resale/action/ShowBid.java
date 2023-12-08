@@ -20,7 +20,7 @@ public class ShowBid extends BaseAction {
     private BidBeanI bidBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       
+        renderPage(req, resp, 8, Bid.class, bidBean.list(new Bid()));
 
     }
 
