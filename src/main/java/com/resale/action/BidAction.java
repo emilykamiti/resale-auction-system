@@ -4,6 +4,8 @@ import com.resale.app.model.entity.Bid;
 import com.resale.app.bean.BidBeanI;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +18,19 @@ public class BidAction extends BaseAction {
     @EJB
     private BidBeanI bidBean;
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        renderPage(req, resp, 1,  Bid.class, bidBean.list(new Bid(null, null, null)));
+        renderPage(req, resp, 1,  Bid.class, bidBean.list(new Bid()));
 
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-           bidBean.addOrUpdate(serializeForm(Bid.class, req.getParameterMap()));
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException { 
 
-        resp.sendRedirect("./biditem.jsp");
+        Bid newBid = serializeForm(Bid.class, req.getParameterMap());
+
+    newBid.setBidTime(LocalDateTime.now());
+    
+    bidBean.addOrUpdate(newBid);
+
+    resp.sendRedirect("./biditem.jsp");
 
     }
 }
