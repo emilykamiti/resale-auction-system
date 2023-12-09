@@ -9,8 +9,7 @@ import javax.persistence.TypedQuery;
 import java.lang.reflect.Field;
 import java.util.*;
 
-
-    public class GenericDao<T> implements GenericDaoI<T> {
+public class GenericDao<T> implements GenericDaoI<T> {
 
     private EntityManager em;
 
@@ -38,7 +37,6 @@ import java.util.*;
             Column column = field.getAnnotation(Column.class);
             field.setAccessible(true);
 
-              System.out.println("Executing query: " + jpql);
             try {
                 if (field.get(entity) != null) {
                     String colName = StringUtils.isEmpty(column.name()) ? field.getName() : column.name();
@@ -73,9 +71,8 @@ import java.util.*;
     }
 
     @Override
-    public void addOrUpdate(T entity) {
-        em.merge(entity);
-
+    public T addOrUpdate(T entity) {
+        return em.merge(entity);
     }
 
     @Override
