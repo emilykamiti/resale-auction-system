@@ -15,8 +15,8 @@ import javax.persistence.Table;
 @HtmlTable(addUrl = "./bids?action=add")
 public class Bid extends BaseEntity {
 
-    @Column(name = "bid_no", nullable = false, unique = true)
-    @HtmlTableColHeader(header = "Bid No")
+    @Column(name = "BidNo", nullable = false, unique = true)
+    @HtmlTableColHeader(header = "Bid Number")
     private String bidNumber;
 
     @Column(name = "BidderName")
@@ -27,7 +27,7 @@ public class Bid extends BaseEntity {
     @HtmlTableColHeader(header = "BId Time")
     private LocalDateTime bidTime;
  
-    @Column(name = "bidamount")
+    @Column(name = "BidAmount")
     @HtmlTableColHeader(header = "Bid Amount")
     private BigDecimal bidAmount;
 
