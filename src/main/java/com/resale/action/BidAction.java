@@ -21,15 +21,12 @@ public class BidAction extends BaseAction {
     private BidBeanI bidBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-           renderPage(req, resp, 4, Bid.class, bidBean.list(new Bid()));
+        renderPage(req, resp, 4, Bid.class, bidBean.list(new Bid()));
 
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
-        Bid newBid = serializeForm(Bid.class, req.getParameterMap());
-        newBid.setBidTime(LocalDateTime.now());
-        bidBean.addOrUpdate(newBid);
+        bidBean.addOrUpdate(serializeForm(Bid.class, req.getParameterMap()));
         resp.sendRedirect("./biditem.jsp");
 
     }

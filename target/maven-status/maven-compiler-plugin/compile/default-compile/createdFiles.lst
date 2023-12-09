@@ -1,12 +1,15 @@
 com/resale/app/bean/BidBean.class
 com/resale/app/bean/ItemBeanI.class
+com/resale/app/utility/BidNo.class
 com/resale/action/ItemAction.class
 com/resale/action/BaseAction.class
 com/resale/action/LogOutAction.class
 com/resale/action/ShowBid.class
+com/resale/app/utility/CustomerTrackId.class
 com/resale/app/view/helper/HtmlMenuToolbar.class
 com/resale/app/view/helper/HtmlCards.class
 com/resale/app/view/helper/HtmlMenu.class
+com/resale/app/utility/TrackNoGenerator.class
 com/resale/app/utility/BuildInfo.class
 com/resale/app/dao/GenericDaoI.class
 com/resale/app/model/entity/BidStatus.class
@@ -27,6 +30,7 @@ com/resale/app/view/helper/HtmlTableColHeader.class
 com/resale/app/view/helper/HtmlFormField.class
 com/resale/app/model/entity/ItemType.class
 com/resale/app/bean/BidBeanI.class
+com/resale/app/utility/BidNoGenerator.class
 com/resale/action/PaymentAction.class
 com/resale/app/view/helper/HtmlFormFieldType.class
 com/resale/app/bean/ItemBean.class
