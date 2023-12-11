@@ -10,7 +10,6 @@ import javax.enterprise.inject.Produces;
 public class BidNoGenerator {
 
     @Produces
-   
    public  String generateBidNumber() {
         return "BID-" + ThreadLocalRandom.current().nextInt(10000, 20000);
     }
