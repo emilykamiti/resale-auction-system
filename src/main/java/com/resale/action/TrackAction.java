@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class TrackAction extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/track.jsp").forward(req, resp);
+        
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

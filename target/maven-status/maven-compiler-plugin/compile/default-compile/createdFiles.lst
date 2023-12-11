@@ -6,6 +6,7 @@ com/resale/action/BaseAction.class
 com/resale/action/LogOutAction.class
 com/resale/action/ShowBid.class
 com/resale/app/utility/CustomerTrackId.class
+com/resale/app/bean/TrackBeanI.class
 com/resale/app/view/helper/HtmlMenuToolbar.class
 com/resale/app/view/helper/HtmlCards.class
 com/resale/app/view/helper/HtmlMenu.class
@@ -15,6 +16,7 @@ com/resale/app/dao/GenericDaoI.class
 com/resale/app/model/entity/BidStatus.class
 com/resale/action/LandingAction.class
 com/filter/AuthFilter.class
+com/resale/app/model/entity/Bidder.class
 com/resale/app/bean/GenericBean.class
 com/resale/app/model/entity/User.class
 com/resale/app/view/helper/HtmlForm.class
@@ -28,10 +30,11 @@ com/resale/app/bean/AuthBean.class
 com/resale/app/bean/PaymentBeanI.class
 com/resale/app/view/helper/HtmlTableColHeader.class
 com/resale/app/view/helper/HtmlFormField.class
-com/resale/app/model/entity/ItemType.class
 com/resale/app/bean/BidBeanI.class
 com/resale/app/utility/BidNoGenerator.class
+com/resale/app/model/entity/Track.class
 com/resale/action/PaymentAction.class
+com/resale/app/model/entity/ItemCategory.class
 com/resale/app/view/helper/HtmlFormFieldType.class
 com/resale/app/bean/ItemBean.class
 com/resale/app/model/entity/Item.class
@@ -46,6 +49,7 @@ com/resale/app/utility/EncryptMd5.class
 com/resale/action/LoginAction.class
 com/resale/action/TrackAction.class
 com/resale/app/bean/UserBeanI.class
+com/resale/app/bean/TrackBean.class
 com/resale/app/view/helper/MenuLinkStatus.class
 com/resale/app/utility/EnumConverter.class
 com/resale/action/BaseAction$1.class

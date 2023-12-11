@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 import com.resale.app.view.helper.HtmlCards;
@@ -30,6 +32,13 @@ public class Item extends BaseEntity {
     @HtmlTableColHeader(header = "Description")
     private String description;
 
+    @HtmlFormField(label = "Account Category", required = true)
+    @Column
+    @Enumerated(EnumType.STRING)
+    private ItemCategory category;
+
+    
+
     @Column(name = "ItemPrice")
     @HtmlCards(label = "Item price")
     @HtmlFormField(label = "Price", required = true)
@@ -47,13 +56,16 @@ public class Item extends BaseEntity {
     @HtmlTableColHeader(header = "Duration")
     @HtmlFormField(label = "Duration", required = true)
     private String bidDuration;
+  
 
     public Item() {
     }
 
-    public Item(String itemName, String description, BigDecimal price, String image, String bidDuration) {
+    public Item(String itemName, String description, ItemCategory category, BigDecimal price, String image,
+            String bidDuration) {
         this.itemName = itemName;
         this.description = description;
+        this.category = category;
         this.price = price;
         this.image = image;
         this.bidDuration = bidDuration;
@@ -66,7 +78,13 @@ public class Item extends BaseEntity {
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
+public ItemCategory getCategory() {
+        return category;
+    }
 
+    public void setCategory(ItemCategory category) {
+        this.category = category;
+    }
     public String getDescription() {
         return description;
     }
