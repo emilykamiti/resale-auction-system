@@ -27,10 +27,10 @@ public class TrackBean extends GenericBean<Track> implements TrackBeanI {
         } else {
             managedTrack = new Track();
             managedTrack.setTrackNo(trackNoGenerator.generateCustomerTrackId());
-          
+
         }
-  managedTrack.setBidNo(bidNoGenerator.generateBidNumber());
-            managedTrack.setTrackTime(LocalDateTime.now());
+        managedTrack.setBidNo(bidNoGenerator.generateBidNumber());
+        managedTrack.setTrackTime(LocalDateTime.now());
         return getDao().addOrUpdate(managedTrack);
     }
 }
