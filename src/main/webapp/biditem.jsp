@@ -45,9 +45,6 @@ x<%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <<form action="./bids" method="post">
     <input type="hidden" id="itemId" name="itemId" value="<%= request.getParameter("id") %>">
     
-    <label for="bidderName">Bidder Name:</label>
-    <input type="text" id="bidderName" name="bidderName" required><br>
-    
     <!-- <label for="bidTime">Bid Time:</label>
     <input type="datetime-local" id="bidTime" name="bidTime" required><br>
      -->
