@@ -37,13 +37,11 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ItemCategory category;
 
-    
-
-    @Column(name = "ItemPrice")
-    @HtmlCards(label = "Item price")
-    @HtmlFormField(label = "Price", required = true)
-    @HtmlTableColHeader(header = "Item Price")
-    private BigDecimal price;
+    @Column(name = "EstimateAmount")
+    @HtmlCards(label = "Estimate Amount")
+    @HtmlFormField(label = "Estimate", required = true)
+    @HtmlTableColHeader(header = "Estimate Amount")
+    private BigDecimal estimateAmount;
 
     @Column(name = "image")
     @HtmlCards(label = "image")
@@ -56,17 +54,19 @@ public class Item extends BaseEntity {
     @HtmlTableColHeader(header = "Duration")
     @HtmlFormField(label = "Duration", required = true)
     private String bidDuration;
+
+    
   
 
     public Item() {
     }
 
-    public Item(String itemName, String description, ItemCategory category, BigDecimal price, String image,
+    public Item(String itemName, String description, ItemCategory category, BigDecimal estimateAmount, String image,
             String bidDuration) {
         this.itemName = itemName;
         this.description = description;
         this.category = category;
-        this.price = price;
+        this.estimateAmount = estimateAmount;
         this.image = image;
         this.bidDuration = bidDuration;
     }
@@ -94,11 +94,11 @@ public ItemCategory getCategory() {
     }
 
     public BigDecimal getPrice() {
-        return price;
+        return estimateAmount;
     }
 
     public void setPrice(BigDecimal price) {
-        this.price = price;
+        this.estimateAmount = price;
     }
 
     public String getImage() {

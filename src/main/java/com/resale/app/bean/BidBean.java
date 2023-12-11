@@ -27,7 +27,6 @@ public class BidBean extends GenericBean<Bid> implements BidBeanI {
             managedBid.setBidNumber(bidNoGenerator.generateBidNumber());
         }
 
-        managedBid.setBidderName(bid.getBidderName());
         managedBid.setBidAmount(bid.getBidAmount());
         managedBid.setBidTime(LocalDateTime.now());
 

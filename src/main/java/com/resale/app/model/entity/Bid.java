@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-
 
 @Entity
 @Table(name = "bids")
@@ -19,42 +19,39 @@ public class Bid extends BaseEntity {
     @HtmlTableColHeader(header = "Bid Number")
     private String bidNumber;
 
-    @Column(name = "BidderName")
-    @HtmlTableColHeader(header = "Bidder Name")
-    private String bidderName;
-
     @Column(name = "BidTime")
     @HtmlTableColHeader(header = "BId Time")
     private LocalDateTime bidTime;
- 
+
+    @Column(name = "EstimateAmount")
+    @HtmlTableColHeader(header = "Estimate Amount")
+    private BigDecimal estimateAmount;
+
     @Column(name = "BidAmount")
     @HtmlTableColHeader(header = "Bid Amount")
     private BigDecimal bidAmount;
 
-    
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Bidder bidder;
+
     public Bid() {
     }
 
-    public Bid(String bidNumber, String bidderName, BigDecimal bidAmount, LocalDateTime bidTime) {
-        this.bidderName = bidderName;
-        this.bidTime = LocalDateTime.now(); 
+    public Bid(String bidNumber, LocalDateTime bidTime, BigDecimal estimateAmount,
+            BigDecimal bidAmount) {
+        this.bidNumber = bidNumber;
+        this.bidTime = bidTime;
+        this.estimateAmount = estimateAmount;
         this.bidAmount = bidAmount;
-        this .bidNumber = bidNumber;
     }
 
-     public String getBidNumber() {
+    public String getBidNumber() {
         return bidNumber;
     }
 
     public void setBidNumber(String bidNumber) {
         this.bidNumber = bidNumber;
-    }
-    public String getBidderName() {
-        return bidderName;
-    }
-
-    public void setBidderName(String bidderName) {
-        this.bidderName = bidderName;
     }
 
     public LocalDateTime getBidTime() {
@@ -73,9 +70,24 @@ public class Bid extends BaseEntity {
         this.bidAmount = bidAmount;
     }
 
+    public BigDecimal getEstimateAmount() {
+        return estimateAmount;
+    }
+
+    public void setEstimateAmount(BigDecimal estimateAmount) {
+        this.estimateAmount = estimateAmount;
+    }
+
+    public Bidder getBidder() {
+        return bidder;
+    }
+
+    public void setCustomer(Bidder customer) {
+        this.bidder = customer;
+    }
     @Override
     public String toString() {
-        return "Bid [bidNumber=" + bidNumber + ", bidderName=" + bidderName + ", bidTime=" + bidTime + ", bidAmount="
+        return "Bid [bidNumber=" + bidNumber +  ", bidTime=" + bidTime + ", bidAmount="
                 + bidAmount + "]";
     }
 
