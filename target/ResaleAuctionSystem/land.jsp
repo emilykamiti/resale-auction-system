@@ -33,6 +33,7 @@
             <h1 class="heading">Sales Auctioneers</h1>
             <p class="paragraph">Own Your Price!</p>
             <p class="paragraph">You're just one bid away!</p>
+            <a href="./home" class="button">Click to proceed</a>
         </div>
 
     </body>

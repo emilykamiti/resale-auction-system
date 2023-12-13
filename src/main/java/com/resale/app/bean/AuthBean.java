@@ -22,8 +22,6 @@ import java.util.List;
 
 @Stateless
 public class AuthBean extends GenericBean<User> implements AuthBeanI, Serializable {
-    // @EJB
-    // MysqlDatabaseTodelete database;
     @PersistenceContext
     EntityManager em;
 
