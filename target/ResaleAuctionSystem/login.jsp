@@ -1,91 +1,43 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Resale Auction Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
 
-        .container {
-            width: 40%;
-        }
+    <!DOCTYPE html>
+    <html lang="en">
 
-        .title {
-            font-family: 'Times New Roman', serif;
-            font-size: 24px;
-            font-weight: bold;
-            color: #000000;
-            text-transform: uppercase;
-            text-align: center;
-            margin: 20px 0;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <title>Resale Auction Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <jsp:include page="./css/loginCss.jsp" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">Resale Auction</h1>
+            <div class="card">
+                <div class="card-body">
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        input[type="text"],
-        input[type="password"],
-        .btn {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #FFA500;
-            color: white;
-        }
-
-        button:hover {
-            background-color: #FF8C00;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h1 class="title">Resale Auction</h1>
-    <div class="card">
-        <div class="card-body">
-           
-            <form action="./login" method="post">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
+                    <form action="./login" method="post">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="login">Login</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="input-group">
-                        <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary" name="login">Login</button>
-            </form>
-        </div>
-    </div>
+            </div>
 
-    <div class="text-center">
-        <div class="registration-links">
-            <a href="./register.jsp">Register</a> | <a href="./forgotpassword">Forgot Password</a>
+            <div class="text-center">
+                <div class="registration-links">
+                    <a href="./register.jsp">Register</a> | <a href="./forgotpassword">Forgot Password</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</body>
-</html>
+    </body>
+
+    </html>

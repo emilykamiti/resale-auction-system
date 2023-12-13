@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <jsp:include page="../style/style.jsp">
+    <jsp:include page="../css/style.jsp">
         <jsp:param name="pageColor" value="red" />
     </jsp:include>
 </head>
