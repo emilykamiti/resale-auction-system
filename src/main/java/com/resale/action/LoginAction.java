@@ -44,9 +44,9 @@ public class LoginAction extends BaseAction {
                 httpSession.setAttribute("userType", userDetails.getUserType());
 
                 if (userDetails.getUserType() == UserType.ADMIN) {
-                    resp.sendRedirect("./admin.jsp");
+                    resp.sendRedirect("./admin");
                 } else {
-                    resp.sendRedirect("./home");
+                    resp.sendRedirect("./login");
                 }
             } else {
                 resp.sendRedirect("./login.jsp");
