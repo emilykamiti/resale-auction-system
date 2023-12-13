@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/")
+@WebFilter(urlPatterns = "/*")
 public class AuthFilter implements Filter {
 
     @Override
@@ -35,7 +35,7 @@ public class AuthFilter implements Filter {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }
         } else {
-            if( servletPath.equals("/landing")  || servletPath.equals("/")  || servletPath.equals("/home")) {
+            if( servletPath.equals("/landing")  || servletPath.equals("/")  || servletPath.equals("/home") ||  servletPath.equals("/register")  || servletPath.equals("/register.jsp")) {
                 filterChain.doFilter(servletRequest, servletResponse);
             } else if(httpSession.isNew()) {
                 httpSession.invalidate();

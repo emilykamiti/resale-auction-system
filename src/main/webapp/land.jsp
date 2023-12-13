@@ -1,115 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Landing Page</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-image: url('https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=1200');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: center;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
 
-        .container {
-            text-align: center;
-            margin-left: 33%;
-        }
+<%@ page isELIgnored="false" %>
+    <jsp:useBean id="navbar" class="com.resale.app.model.entity.view.NavBar" scope="request" />
+    <jsp:useBean id="contentBean" class="com.resale.app.userbean.ContentBean" scope="request" />
+    <!DOCTYPE html>
+    <html>
 
-        .heading {
-            font-size: 4em;
-            margin-bottom: 20px;
-            color: #FFA500;
-        }
+    <head>
 
-        .paragraph {
-            font-size: 1em;
-            color: rgb(163, 163, 221);
-        }
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/1211563ad5.js" crossorigin="anonymous"></script>
 
-        .button {
-            margin-top: 10%;
-            display: inline-block;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
 
-        .button:hover {
-            background-color: #0056b3;
-        }
-        .navbar {
-            display: flex;
-            justify-content: flex-start; 
-            align-items: center;
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            top: 0; 
-            background-color: transparent;
-        }
+        <jsp:include page="./css/landingCss.jsp" />
+    </head>
 
-        .dropdown {
-            margin-right: 20px;
-            position: relative; 
-        }
+    <body>
+        <div class="NavbarContent">
+            <jsp:setProperty name="navbar" property="activeLink" value='${requestScope.activeMenu}' />
+            <jsp:setProperty name="navbar" property="userType" value='${sessionScope.userType}' />
+            <jsp:getProperty name="navbar" property="menu" />
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: blue; 
-            min-width: 150px; 
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            padding: 10px; 
-        }
+        </div>
+        <div class="Content">
+            <jsp:setProperty name="contentBean" property="content" value='<%= request.getAttribute("content") %>' />
+            <jsp:getProperty name="contentBean" property="content" />
+        </div>
 
-        .dropdown.active .dropdown-content {
-            display: block;
-        }
+        <div class="container">
+            <h1 class="heading">Sales Auctioneers</h1>
+            <p class="paragraph">Own Your Price!</p>
+            <p class="paragraph">You're just one bid away!</p>
+        </div>
 
-        .dropdown-item {
-            margin-bottom: 10px; 
-        }
+    </body>
 
-        .dropdown-item a {
-            display: block;
-            font-weight: bold;
-            color: black;
-            text-decoration: none; 
-            padding: 8px 0;
-        }
-
-        .dropdown-item a:hover {
-            background-color: #ddd;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1 class="heading">eSales Auctioning</h1>
-        <p class="paragraph">Own Your Price!</p>
-        <p class="paragraph">You're just one bid away!</p>
-        <a href="./home" class="button">Click to proceed</a>
-    </div>
-
-    <script>
-        function toggleDropdown() {
-            const dropdown = document.getElementById('dropdown');
-            dropdown.classList.toggle('active');
-        }
-    </script>
-</body>
-</html>
+    </html>

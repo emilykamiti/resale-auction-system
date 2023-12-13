@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.resale.app.bean.UserBeanI;
 import com.resale.app.model.entity.User;
 
-@WebServlet("/user")
+@WebServlet("/register")
 public class UserAction extends BaseAction {
     @EJB
     UserBeanI userBean;
