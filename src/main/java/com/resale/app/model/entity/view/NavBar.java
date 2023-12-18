@@ -39,8 +39,8 @@ public class NavBar implements Menu, Serializable {
         leftLinks.add(new NavigationLink("./about", "About us", NavStatus.ACTIVE));
         leftLinks.add(new NavigationLink("./home", "Home", NavStatus.ACTIVE));
         leftLinks.add(new NavigationLink("./type", "Category", NavStatus.ACTIVE));
-        leftLinks.add(new NavigationLink("./register.jsp", "Login", NavStatus.NOT_ACTIVE));
-        leftLinks.add(new NavigationLink("./login", "Register", NavStatus.NOT_ACTIVE));
+        leftLinks.add(new NavigationLink("./register.jsp", "Register", NavStatus.NOT_ACTIVE));
+        leftLinks.add(new NavigationLink("./login", "Login", NavStatus.NOT_ACTIVE));
         rightLinks.add(new NavigationLink("./admin", "Admin", NavStatus.NOT_ACTIVE));
     }
 

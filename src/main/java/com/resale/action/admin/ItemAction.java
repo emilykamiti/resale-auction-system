@@ -1,7 +1,7 @@
 package com.resale.action.admin;
 
-
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -20,6 +20,9 @@ public class ItemAction extends BaseAction {
     private ItemBeanI itemBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        // String searchItem = req.getParameter("searchItem");
+        // List<Item> items;
         renderPage(req, resp, 4, Item.class, itemBean.list(new Item()));
     }
 

@@ -99,17 +99,18 @@ public class BaseAction extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    public void renderAdmin(HttpServletRequest req, HttpServletResponse res, int activeMenu, Class<?> entity, List<?> entityList) throws ServletException, IOException {
+    public void renderAdmin(HttpServletRequest req, HttpServletResponse res, int activeMenu, Class<?> entity,
+            List<?> entityList) throws ServletException, IOException {
         req.setAttribute("activeMenu", activeMenu);
-          if (StringUtils.trimToEmpty(req.getParameter("action")).equals("add"))
-              req.setAttribute("content", HtmlCmpRender.form(entity));
-          else
-              req.setAttribute("content", HtmlCmpRender.table(entityList, entity));
+        if (StringUtils.trimToEmpty(req.getParameter("action")).equals("add"))
+            req.setAttribute("content", HtmlCmpRender.form(entity));
+        else
+            req.setAttribute("content", HtmlCmpRender.table(entityList, entity));
 
-          RequestDispatcher dispatcher = req.getRequestDispatcher("./app/adminPage.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("./app/adminPage.jsp");
         dispatcher.forward(req, res);
 
-     }
+    }
 
     public void renderCard(HttpServletRequest request, HttpServletResponse response, int activeMenu, String content)
             throws ServletException, IOException {
@@ -121,13 +122,19 @@ public class BaseAction extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    public void renderUserAccountPage(HttpServletRequest req, HttpServletResponse res, int activeMenu, String content) throws ServletException, IOException {
-        req.setAttribute("activeMenu", activeMenu);
-        req.setAttribute("content", content);
+    // public void renderCardWithClock(HttpServletRequest request,
+    // HttpServletResponse response, int activeMenu,
+    // String content)
+    // throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("./user.jsp");
-        dispatcher.forward(req, res);
+    // request.setAttribute("activeMenu", activeMenu);
+    // String clockHTML = HtmlCmpRender.clock();
+    // content += clockHTML;
 
-     }
+    // request.setAttribute("content", content);
+
+    // RequestDispatcher dispatcher = request.getRequestDispatcher("./land.jsp");
+    // dispatcher.forward(request, response);
+    // }
 
 }

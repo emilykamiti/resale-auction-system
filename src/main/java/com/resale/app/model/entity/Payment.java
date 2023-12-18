@@ -9,11 +9,10 @@ import javax.persistence.Table;
 
 import com.resale.app.view.helper.HtmlForm;
 
-
 @Entity
 @Table(name = "payments")
 @HtmlForm(label = "payment", url = "./payment")
-public class Payment  extends BaseEntity {
+public class Payment extends BaseEntity {
 
     @Column(name = "amount")
     private BigDecimal amount;
@@ -33,7 +32,6 @@ public class Payment  extends BaseEntity {
         this.paymentMethod = paymentMethod;
         this.transactionId = transactionId;
     }
-
 
     public BigDecimal getAmount() {
         return amount;
