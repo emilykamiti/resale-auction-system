@@ -21,6 +21,11 @@
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username" required>
                         </div>
+
+                        <div class="form-group">
+                            <label for="username">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" required>
+                        </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <div class="input-group">

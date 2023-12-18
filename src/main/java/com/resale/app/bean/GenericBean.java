@@ -6,10 +6,11 @@ import javax.persistence.PersistenceContext;
 
 import com.resale.app.dao.GenericDao;
 import com.resale.app.dao.GenericDaoI;
+import com.resale.app.model.entity.Bid;
 
 import java.util.List;
 
-public abstract class GenericBean<T> implements GenericBeanI<T>{
+public abstract class GenericBean<T> implements GenericBeanI<T> {
 
     @PersistenceContext
     private EntityManager em;
@@ -35,9 +36,35 @@ public abstract class GenericBean<T> implements GenericBeanI<T>{
 
     }
 
-    public GenericDao<T> getDao(){
+    @Override
+    public T findById(Class<T> entity, Long id) {
+        return genericDao.findById(entity, id);
+    }
+
+    @Override
+    public T findByUserName(Class<T> entity, String userName) {
+        return genericDao.findByUserName(entity, userName);
+    }
+
+    @Override
+    public boolean doesUserExistByEmail(String email) {
+        genericDao.setEm(em);
+        return genericDao.doesUserExistByEmail(email);
+    }
+
+    public GenericDao<T> getDao() {
         genericDao.setEm(em);
         return (GenericDao<T>) genericDao;
+    }
+
+    public T getById(Class<T> entityClass, Long id) {
+        return em.find(entityClass, id);
+    }
+
+    @Override
+    public void delete(Class<?> entityClass, Long id) {
+        genericDao.setEm(em);
+        genericDao.delete(entityClass, id);
     }
 
 }

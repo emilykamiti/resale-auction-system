@@ -2,48 +2,52 @@ package com.resale.app.model.entity;
 
 import com.resale.app.view.helper.HtmlTable;
 import com.resale.app.view.helper.HtmlTableColHeader;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import org.hibernate.annotations.Formula;
 
 @Entity
 @Table(name = "bids")
 @HtmlTable(addUrl = "./bids?action=add")
 public class Bid extends BaseEntity {
 
-    @Column(name = "BidNo", nullable = false, unique = true)
+    @Column(name = "BidNo")
     @HtmlTableColHeader(header = "Bid Number")
     private String bidNumber;
 
     @Column(name = "BidTime")
-    @HtmlTableColHeader(header = "BId Time")
+    @HtmlTableColHeader(header = "Bid Time")
     private LocalDateTime bidTime;
-
-    @Column(name = "EstimateAmount")
-    @HtmlTableColHeader(header = "Estimate Amount")
-    private BigDecimal estimateAmount;
 
     @Column(name = "BidAmount")
     @HtmlTableColHeader(header = "Bid Amount")
     private BigDecimal bidAmount;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Bidder bidder;
+    @Formula("user_id")
+    private Long userId;
+
+    public Bid(String bidNumber, LocalDateTime bidTime, BigDecimal bidAmount, User user, Long userId) {
+        this.bidNumber = bidNumber;
+        this.bidTime = bidTime;
+        this.bidAmount = bidAmount;
+        this.user = user;
+        this.userId = userId;
+    }
 
     public Bid() {
     }
 
-    public Bid(String bidNumber, LocalDateTime bidTime, BigDecimal estimateAmount,
-            BigDecimal bidAmount) {
-        this.bidNumber = bidNumber;
-        this.bidTime = bidTime;
-        this.estimateAmount = estimateAmount;
-        this.bidAmount = bidAmount;
+    @Override
+    public String toString() {
+        return "Bid [bidNumber=" + bidNumber + ", bidTime=" + bidTime + ", bidAmount=" + bidAmount + ", user=" + user
+                + "]";
     }
 
     public String getBidNumber() {
@@ -70,25 +74,19 @@ public class Bid extends BaseEntity {
         this.bidAmount = bidAmount;
     }
 
-    public BigDecimal getEstimateAmount() {
-        return estimateAmount;
+    public User getUser() {
+        return user;
     }
 
-    public void setEstimateAmount(BigDecimal estimateAmount) {
-        this.estimateAmount = estimateAmount;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Bidder getBidder() {
-        return bidder;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setCustomer(Bidder customer) {
-        this.bidder = customer;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
-    @Override
-    public String toString() {
-        return "Bid [bidNumber=" + bidNumber +  ", bidTime=" + bidTime + ", bidAmount="
-                + bidAmount + "]";
-    }
-
 }

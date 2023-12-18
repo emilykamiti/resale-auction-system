@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.resale.app.model.entity.Bid;
 import com.resale.app.model.entity.Item;
+import com.resale.app.model.entity.User;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -27,7 +28,6 @@ public class HtmlCmpRender implements Serializable {
 
         StringBuilder trBuilder = new StringBuilder();
 
-        // Add the "Add" button only if the dataClass is Item
         if (dataClass.equals(Item.class)) {
             trBuilder.append("<a class=\"link-btn-add\" href=\"")
                     .append(htmlTable.addUrl()).append("\">Add</a><br/>");
@@ -85,18 +85,22 @@ public class HtmlCmpRender implements Serializable {
                     }
                 }
 
-                if (dataClass.equals(Bid.class)) {
-                    trBuilder.append("<td>")
-                            .append("<button class=\"btn-accept\">Accept</button>")
-                            .append("<button class=\"btn-reject\">Reject</button>")
-                            .append("</td>");
+                if (data instanceof Bid) {
+                    Bid bid = (Bid) data;
+                    User bidUser = bid.getUser();
+                    if (bidUser != null) {
+                        trBuilder.append("<td>")
+                                .append("<button class=\"btn-accept\" onclick=\"sendAcceptEmail('"
+                                        + bidUser.getEmail() + "')\">Accept</button>")
+                                .append("<button class=\"btn-reject\" onclick=\"sendRejectEmail('"
+                                        + bidUser.getEmail() + "')\">Reject</button>")
+                                .append("</td>");
+                    } else {
+                        trBuilder.append("<td>User not available</td>");
+                    }
                 }
-                trBuilder.append("<tr>");
-
             }
         }
-
-        trBuilder.append("</table>");
 
         return trBuilder.toString();
 
@@ -139,7 +143,6 @@ public class HtmlCmpRender implements Serializable {
                         .append(">");
 
                 for (Object enumValue : field.getType().getEnumConstants()) {
-                    // System.out.println(enumValue);
 
                     try {
                         Method method = field.getType().getMethod("getName");
@@ -173,6 +176,29 @@ public class HtmlCmpRender implements Serializable {
 
     private static String ifBlank(String target, String alternative) {
         return StringUtils.isBlank(target) ? alternative : StringUtils.trimToEmpty(target);
+    }
+
+    public static String clock() {
+        StringBuilder clockHTML = new StringBuilder("<div class='Clock'>");
+        clockHTML.append("<h1 id='clockDisplay'></h1>");
+        clockHTML.append("</div>");
+        clockHTML.append("<script>");
+        clockHTML.append("function updateClock() {");
+        clockHTML.append("var now = new Date();");
+        clockHTML.append("var hours = now.getHours();");
+        clockHTML.append("var minutes = now.getMinutes();");
+        clockHTML.append("var seconds = now.getSeconds();");
+        clockHTML.append("hours = hours < 10 ? '0' + hours : hours;");
+        clockHTML.append("minutes = minutes < 10 ? '0' + minutes : minutes;");
+        clockHTML.append("seconds = seconds < 10 ? '0' + seconds : seconds;");
+        clockHTML.append("var time = hours + ':' + minutes + ':' + seconds;");
+        clockHTML.append("document.getElementById('clockDisplay').textContent = time;");
+        clockHTML.append("}");
+        clockHTML.append("setInterval(updateClock, 1000);");
+        clockHTML.append("updateClock();");
+        clockHTML.append("</script>");
+
+        return clockHTML.toString();
     }
 
 }

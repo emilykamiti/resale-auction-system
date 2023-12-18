@@ -42,11 +42,13 @@ public class LoginAction extends BaseAction {
                 httpSession.setAttribute("loggedInId", new Date().getTime() + "");
                 httpSession.setAttribute("username", userDetails.getUsername());
                 httpSession.setAttribute("userType", userDetails.getUserType());
+                httpSession.setAttribute("userId", userDetails.getId());
+                httpSession.setAttribute("email", userDetails.getEmail());
 
                 if (userDetails.getUserType() == UserType.ADMIN) {
                     resp.sendRedirect("./admin");
                 } else {
-                    resp.sendRedirect("./login");
+                    resp.sendRedirect("./home");
                 }
             } else {
                 resp.sendRedirect("./login.jsp");

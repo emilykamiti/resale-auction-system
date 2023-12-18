@@ -13,8 +13,6 @@ import com.resale.app.model.entity.User;
 import com.resale.app.utility.EncryptText;
 
 import java.io.Serializable;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;

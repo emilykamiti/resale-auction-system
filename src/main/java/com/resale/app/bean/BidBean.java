@@ -3,9 +3,15 @@ package com.resale.app.bean;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.resale.app.model.entity.Bid;
+import com.resale.app.model.entity.User;
 import com.resale.app.utility.BidNo;
 import com.resale.app.utility.BidNoGenerator;
 
@@ -17,19 +23,32 @@ public class BidBean extends GenericBean<Bid> implements BidBeanI {
     @BidNo
     private BidNoGenerator bidNoGenerator;
 
-    public Bid addOrUpdate(Bid bid) {
-        Bid managedBid;
+    @PersistenceContext
+    private EntityManager em;
 
-        if (bid.getId() != null) {
-            managedBid = getDao().getEm().find(Bid.class, bid.getId());
-        } else {
-            managedBid = new Bid();
-            managedBid.setBidNumber(bidNoGenerator.generateBidNumber());
-        }
+    public Bid addOrUpdateBid(Bid bid, String username) {
 
-        managedBid.setBidAmount(bid.getBidAmount());
-        managedBid.setBidTime(LocalDateTime.now());
+        User user;
 
-        return getDao().addOrUpdate(managedBid);
+        TypedQuery<User> query = em.createNamedQuery("findUserByUsername", User.class);
+        query.setParameter("username", username);
+        user = query.getSingleResult();
+
+        bid.setUser(user);
+
+        bid.setBidNumber(bidNoGenerator.generateBidNumber());
+        bid.setBidTime(LocalDateTime.now());
+
+        getDao().addOrUpdate(bid);
+
+        return bid;
     }
+
+    public List<Bid> getBidByUserId(Long userId) {
+        return em.createQuery("SELECT b FROM Bid b WHERE b.user.id = :userId", Bid.class)
+                .setParameter("userId", userId)
+                .getResultList();
+
+    }
+
 }

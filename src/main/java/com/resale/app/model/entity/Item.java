@@ -32,8 +32,8 @@ public class Item extends BaseEntity {
     @HtmlTableColHeader(header = "Description")
     private String description;
 
-    @HtmlFormField(label = "Account Category", required = true)
-    @Column
+    @Column(name = "ItemCategory")
+    @HtmlFormField(label = "ItemCategory", required = true)
     @Enumerated(EnumType.STRING)
     private ItemCategory category;
 
@@ -55,9 +55,6 @@ public class Item extends BaseEntity {
     @HtmlFormField(label = "Duration", required = true)
     private String bidDuration;
 
-    
-  
-
     public Item() {
     }
 
@@ -78,13 +75,15 @@ public class Item extends BaseEntity {
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
-public ItemCategory getCategory() {
+
+    public ItemCategory getCategory() {
         return category;
     }
 
     public void setCategory(ItemCategory category) {
         this.category = category;
     }
+
     public String getDescription() {
         return description;
     }

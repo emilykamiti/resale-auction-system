@@ -13,7 +13,6 @@ public class HtmlMenuToolbar implements HtmlMenu, Serializable {
     private final List<MenuLink> links = new ArrayList<>();
 
     {
-        links.add(new MenuLink("./track", "Track", MenuLinkStatus.NOT_ACTIVE));
         links.add(new MenuLink("./payment", "Payment", MenuLinkStatus.NOT_ACTIVE));
         links.add(new MenuLink("./logout", "Logout", MenuLinkStatus.ACTIVE));
         links.add(new MenuLink("./login", "Login", MenuLinkStatus.ACTIVE));

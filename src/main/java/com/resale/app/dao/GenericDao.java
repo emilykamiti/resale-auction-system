@@ -1,10 +1,12 @@
 package com.resale.app.dao;
 
-
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.lang.reflect.Field;
 import java.util.*;
@@ -13,8 +15,7 @@ public class GenericDao<T> implements GenericDaoI<T> {
 
     private EntityManager em;
 
-
-    @SuppressWarnings({"unchecked"})
+    @SuppressWarnings({ "unchecked" })
     @Override
     public List<T> list(T entity) {
         Class<?> clazz = entity.getClass();
@@ -22,7 +23,7 @@ public class GenericDao<T> implements GenericDaoI<T> {
         String simpleName = entity.getClass().getSimpleName();
 
         String tAlias = (simpleName.charAt(0) + "_").toLowerCase();
-        String jpql  = "FROM " + entity.getClass().getSimpleName() + " " + tAlias;
+        String jpql = "FROM " + entity.getClass().getSimpleName() + " " + tAlias;
 
         StringBuilder whereClause = new StringBuilder();
         Map<String, Object> whereParams = new HashMap<>();
@@ -42,8 +43,8 @@ public class GenericDao<T> implements GenericDaoI<T> {
                     String colName = StringUtils.isEmpty(column.name()) ? field.getName() : column.name();
 
                     whereClause
-                        .append(whereParams.isEmpty() ? "" : " AND ")
-                        .append(tAlias).append(".").append(colName).append("=:").append(colName);
+                            .append(whereParams.isEmpty() ? "" : " AND ")
+                            .append(tAlias).append(".").append(colName).append("=:").append(colName);
 
                     whereParams.put(colName, field.get(entity));
                 }
@@ -62,7 +63,7 @@ public class GenericDao<T> implements GenericDaoI<T> {
         TypedQuery<T> query = (TypedQuery<T>) em.createQuery(jpql, entity.getClass());
 
         for (Map.Entry<String, Object> entry : whereParams.entrySet()) {
-            System.out.println("param Name: " + entry.getKey() + " = " + entry.getValue() );
+            System.out.println("param Name: " + entry.getKey() + " = " + entry.getValue());
             query = query.setParameter(entry.getKey(), entry.getValue());
         }
 
@@ -76,8 +77,46 @@ public class GenericDao<T> implements GenericDaoI<T> {
     }
 
     @Override
-    public void delete(T entity) {
+    public boolean doesUserExistByEmail(String email) {
+        try {
+            Query query = em.createQuery("SELECT COUNT(u) FROM User u WHERE u.email = :email");
+            query.setParameter("email", email);
+            Long count = (Long) query.getSingleResult();
+            return count > 0;
+        } catch (NoResultException e) {
+            return false;
+        }
+    }
 
+    @Override
+    public T findByUserName(Class<T> entity, String userName) {
+        try {
+            String jpql = "SELECT e FROM " + entity.getSimpleName() + " e WHERE e.userName = :userName";
+
+            TypedQuery<T> query = em.createQuery(jpql, entity);
+            query.setParameter("userName", userName);
+
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public T findById(Class<T> entity, Long id) {
+        return em.find(entity, id);
+    }
+
+    @Override
+    public void delete(Class<?> entityClass, Long id) {
+
+        T entity = em.find((Class<T>) entityClass, id);
+
+        if (entity != null) {
+            em.remove(entity);
+        } else {
+            throw new EntityNotFoundException("Entity not found with id: " + id);
+        }
     }
 
     public EntityManager getEm() {

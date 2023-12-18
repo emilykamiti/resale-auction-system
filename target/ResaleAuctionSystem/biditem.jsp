@@ -12,6 +12,7 @@ x<%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <style>body {
         font-family: Arial, Helvetica, sans-serif;
         background-size: cover;
+        background-color: coral;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -35,26 +36,21 @@ x<%@ page contentType="text/html;charset=UTF-8" language="java" %>
         text-align: center;
         margin: 20px 0;
     }
-        /* ... your CSS styles ... */
     </style>
 </head>
 <body>
 <div class="container">
     <h2 class="form-title">MAKE BID</h2>
    
-    <<form action="./bids" method="post">
-    <input type="hidden" id="itemId" name="itemId" value="<%= request.getParameter("id") %>">
+    <form action="./bids" method="post">
     
-    <!-- <label for="bidTime">Bid Time:</label>
-    <input type="datetime-local" id="bidTime" name="bidTime" required><br>
-     -->
-    <label for="bidAmount">Amount to bid:</label>
+    <label for="bidAmount">Amount to bid</label>
+    
     <input type="number" id="bidAmount" name="bidAmount" required><br>
     
     <button type="submit" name="bid">Make a bid</button>
     <a href="./home" class="homepage-link">Go to homepage</a>
 </form>
-
         </div>
     </div>
 </body>
