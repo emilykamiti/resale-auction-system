@@ -1,6 +1,7 @@
 com/resale/app/bean/BidBean.class
 com/resale/app/bean/ItemBeanI.class
 com/resale/app/utility/BidNo.class
+com/resale/app/model/entity/Email.class
 com/resale/action/BaseAction.class
 com/resale/action/LogOutAction.class
 com/resale/app/utility/CustomerTrackId.class
@@ -10,11 +11,13 @@ com/resale/app/view/helper/HtmlMenuToolbar.class
 com/resale/app/view/helper/HtmlCards.class
 com/resale/app/view/helper/HtmlMenu.class
 com/resale/app/api/rest/BidRestApi.class
+com/resale/app/api/rest/EmailRestApi.class
 com/resale/app/utility/TrackNoGenerator.class
 com/resale/app/utility/BuildInfo.class
 com/resale/app/dao/GenericDaoI.class
 com/resale/app/model/entity/BidStatus.class
 com/resale/action/LandingAction.class
+com/resale/action/admin/BIdstatusAction.class
 com/resale/app/api/config/Rest.class
 com/resale/app/api/rest/BaseRestApi.class
 com/resale/app/bean/GenericBean.class
@@ -41,6 +44,7 @@ com/resale/app/userbean/ActiveMenuBean.class
 com/resale/app/model/entity/Track.class
 com/resale/app/model/entity/ItemCategory.class
 com/resale/app/api/rest/RestResponseWrapper.class
+com/resale/app/bean/EmailBean$1.class
 com/resale/action/admin/PaymentAction.class
 com/resale/app/view/helper/HtmlFormFieldType.class
 com/resale/app/bean/ItemBean.class
@@ -61,6 +65,7 @@ com/resale/action/LoginAction.class
 com/resale/app/bean/UserBeanI.class
 com/resale/app/model/entity/view/NavigationLink.class
 com/resale/app/bean/TrackBean.class
+com/resale/app/bean/EmailBeanI.class
 com/resale/app/view/helper/MenuLinkStatus.class
 com/resale/app/utility/EnumConverter.class
 com/resale/action/BaseAction$1.class

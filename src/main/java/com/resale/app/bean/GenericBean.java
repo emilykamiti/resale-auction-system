@@ -6,7 +6,6 @@ import javax.persistence.PersistenceContext;
 
 import com.resale.app.dao.GenericDao;
 import com.resale.app.dao.GenericDaoI;
-import com.resale.app.model.entity.Bid;
 
 import java.util.List;
 

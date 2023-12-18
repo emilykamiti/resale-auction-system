@@ -1,7 +1,6 @@
 package com.resale.app.api.rest;
 
 import com.resale.app.bean.ItemBeanI;
-import com.resale.app.model.entity.Bid;
 import com.resale.app.model.entity.Item;
 
 import javax.annotation.security.RolesAllowed;
