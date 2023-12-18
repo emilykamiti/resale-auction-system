@@ -16,6 +16,7 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/api/rest/ItemRestApi.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlTable.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlFormFieldType.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/Email.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/utility/EnumConverter.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/LoginAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/utility/TrackNoGenerator.java
@@ -23,7 +24,6 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/AuthBeanI.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/utility/BidNo.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/dao/GenericDaoI.java
-/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/api/rest/EmailContollerApi.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/EmailBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/Bid.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/api/config/Rest.java
@@ -41,6 +41,7 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/BidStatus.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/Type.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/BidBeanI.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/EmailBeanI.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/AuthBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/TypeAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/view/Menu.java
@@ -60,17 +61,21 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/admin/PaymentAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/api/rest/RestResponseWrapper.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlMenu.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/api/rest/EmailRestApi.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/api/rest/UserRestApi.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/MenuLinkStatus.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/userbean/ActiveMenuBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/PaymentBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlTableColHeader.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/utility/BuildInfo.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/admin/BIdstatusAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/GenericBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/User.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/AuditLogBean.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/StatusBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/admin/ItemAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/view/NavBar.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/StatusBeanI.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/BidBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/GenericBeanI.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/view/NavStatus.java

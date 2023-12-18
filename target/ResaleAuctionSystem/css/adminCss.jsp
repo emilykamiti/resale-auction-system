@@ -20,10 +20,11 @@
     .ContentLinks {
         padding: 2rem 1rem;
         flex: 0 0 18%;
+        width: 10vw;
         height: 100vh;
         display: flex;
         flex-direction: column;
-        background-color: #363062;
+        background-color: rgb(243, 111, 63);
         color: #FAAB78;
         position: fixed;
         left: 0;
@@ -45,7 +46,7 @@
         padding-left: 2.4rem;
         padding-top: 1rem;
         text-decoration: none;
-        color: #F3FBF1;
+        color: rgb(22, 22, 224)
     }
 
     .ContentLinks a.active {

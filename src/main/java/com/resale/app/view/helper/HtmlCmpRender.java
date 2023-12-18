@@ -96,7 +96,7 @@ public class HtmlCmpRender implements Serializable {
                                         + bidUser.getEmail() + "')\">Reject</button>")
                                 .append("</td>");
                     } else {
-                        trBuilder.append("<td>User not available</td>");
+                        trBuilder.append("");
                     }
                 }
             }

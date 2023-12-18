@@ -101,7 +101,6 @@ public class BaseAction extends HttpServlet {
 
     public void renderAdmin(HttpServletRequest req, HttpServletResponse res, int activeMenu, Class<?> entity,
             List<?> entityList) throws ServletException, IOException {
-        req.setAttribute("activeMenu", activeMenu);
         if (StringUtils.trimToEmpty(req.getParameter("action")).equals("add"))
             req.setAttribute("content", HtmlCmpRender.form(entity));
         else
@@ -121,20 +120,5 @@ public class BaseAction extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("./app/index.jsp");
         dispatcher.forward(request, response);
     }
-
-    // public void renderCardWithClock(HttpServletRequest request,
-    // HttpServletResponse response, int activeMenu,
-    // String content)
-    // throws ServletException, IOException {
-
-    // request.setAttribute("activeMenu", activeMenu);
-    // String clockHTML = HtmlCmpRender.clock();
-    // content += clockHTML;
-
-    // request.setAttribute("content", content);
-
-    // RequestDispatcher dispatcher = request.getRequestDispatcher("./land.jsp");
-    // dispatcher.forward(request, response);
-    // }
 
 }

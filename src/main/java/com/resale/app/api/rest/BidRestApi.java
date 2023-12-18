@@ -8,7 +8,6 @@ import javax.ws.rs.core.Response;
 
 import com.resale.app.bean.BidBeanI;
 import com.resale.app.model.entity.Bid;
-import com.resale.app.model.entity.Item;
 
 @Path("/bids")
 public class BidRestApi extends BaseRestApi {
