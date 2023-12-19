@@ -40,6 +40,7 @@ x<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 </head>
 <body>
 <div class="container">
+
     <h2 class="form-title">MAKE BID</h2>
    
     <form action="./bids" method="post">
@@ -55,4 +56,4 @@ x<%@ page contentType="text/html;charset=UTF-8" language="java" %>
     </div>
 </body>
 </head>
-            </html>
+</html>

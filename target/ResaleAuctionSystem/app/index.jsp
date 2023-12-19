@@ -18,6 +18,7 @@
     <h3> ${initParam.AppName} | User: ${sessionScope.username} </h3><br/>
 
     ${requestScope.content}
+    
 </body>
 
 </html>

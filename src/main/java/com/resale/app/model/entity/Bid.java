@@ -33,6 +33,8 @@ public class Bid extends BaseEntity {
     @Formula("user_id")
     private Long userId;
 
+    private long Status; // ! to do later
+
     public Bid(String bidNumber, LocalDateTime bidTime, BigDecimal bidAmount, User user, Long userId) {
         this.bidNumber = bidNumber;
         this.bidTime = bidTime;

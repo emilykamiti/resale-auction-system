@@ -51,8 +51,8 @@ public class BidBean extends GenericBean<Bid> implements BidBeanI {
 
         Email email = new Email();
         email.senderEmail = "emilykamiti@gmail.com";
-        email.recipientEmail = "kenmutesh901@gmail.com";
-        email.subject = "Testing";
+        email.recipientEmail = bid.getUser().getEmail();
+        email.subject = "Bid Confirmation";
         email.body = "You have successully made a bid of " + bid.getBidAmount();
 
         String jsonEmail = new Gson().toJson(email);
