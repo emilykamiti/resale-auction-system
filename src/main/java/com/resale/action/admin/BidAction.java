@@ -31,8 +31,6 @@ public class BidAction extends BaseAction {
         String username = (String) session.getAttribute("username");
 
         Bid bid = serializeForm(Bid.class, req.getParameterMap());
-
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + username);
         bidBean.addOrUpdateBid(bid, username);
         res.sendRedirect("./biditem.jsp");
     }

@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Email {
-    private String senderEmail;
-    private String recipientEmail;
-    private String subject;
-    private String body;
+    public String senderEmail;
+    public String recipientEmail;
+    public String subject;
+    public String body;
 
     public Email() {
     }

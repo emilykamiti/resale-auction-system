@@ -1,41 +1,27 @@
 function sendAcceptEmail(email) {
-    fetch('/acceptEmailEndpoint', {
+    console.log('sendAcceptEmail called with email:', email);
+    fetch('/email/accept', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: email, action: 'accept' }),
+        body: JSON.stringify({ email: email }),
     })
-    .then(response => {
-        if (response.ok) {
-            alert('Acceptance email sent successfully!');
-        } else {
-            throw new Error('Failed to send acceptance email.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to send acceptance email.');
-    });
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => console.error('Error:', error))
 }
 
 function sendRejectEmail(email) {
-    fetch('/rejectEmailEndpoint', {
+    console.log('sendRejectEmail called with email:', email);
+    fetch('/email/reject', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: email, action: 'reject' }),
+        body: JSON.stringify({ email: email }),
     })
-    .then(response => {
-        if (response.ok) {
-            alert('Rejection email sent successfully!');
-        } else {
-            throw new Error('Failed to send rejection email.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to send rejection email.');
-    });
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => console.error('Error:', error))
 }

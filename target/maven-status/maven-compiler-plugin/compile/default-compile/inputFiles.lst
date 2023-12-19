@@ -46,6 +46,7 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/TypeAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/view/Menu.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/AdminAction.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/RejectAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlCards.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/utility/EncryptText.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/ItemCategory.java
@@ -71,6 +72,7 @@
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/admin/BIdstatusAction.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/GenericBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/model/entity/User.java
+/home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/Accept.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/AuditLogBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/app/bean/StatusBean.java
 /home/nasinza/Desktop/mywork/resale-auction-system/src/main/java/com/resale/action/admin/ItemAction.java
