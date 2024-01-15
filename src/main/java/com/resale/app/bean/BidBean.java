@@ -63,7 +63,7 @@ public class BidBean extends GenericBean<Bid> implements BidBeanI {
     }
 
     public List<Bid> getBidByItemId(Long itemId) {
-        return em.createQuery("SELECT b FROM Bid b WHERE b.item.id = :itemId", Bid.class)
+        return em.createQuery("SELECT b FROM Bid b WHERE b.item.id = :itemId ORDER BY b.bidAmount DESC", Bid.class)
                 .setParameter("itemId", itemId)
                 .getResultList();
     }

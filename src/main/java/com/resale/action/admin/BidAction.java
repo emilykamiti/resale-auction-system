@@ -5,6 +5,9 @@ import com.resale.action.BaseAction;
 import com.resale.app.bean.BidBeanI;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -21,9 +24,24 @@ public class BidAction extends BaseAction {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-
+    
+        String searchId = req.getParameter("itemId");
+    
+        if (searchId != null && !searchId.isEmpty()) {
+            Long id = Long.parseLong(searchId);
+            List<Bid> bids = bidBean.getBidByItemId(id);
+    
+            if (bids != null && !bids.isEmpty()) {
+                req.setAttribute("bids", bids);
+            } else {
+                req.setAttribute("errorMessage", "No bids found for item with id " + searchId);
+            }
+        }
+    
+        setSearchForm(req);
         renderPage(req, resp, 4, Bid.class, bidBean.list(new Bid()));
     }
+    
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();

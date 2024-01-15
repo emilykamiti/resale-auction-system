@@ -77,7 +77,6 @@
         font-size: 400%;
         font-family: Raleway, sans-serif;
         margin-bottom: 10px;
-        margin-bottom: 10px;
         color: #f35d4b;
         margin-left: 20px;
         margin-block-start: 2.33em;
@@ -88,11 +87,11 @@
     }
 
     .paragraph{
-        margin-top: 40px;
         margin-block-start: 1em;
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
+        margin-bottom: 80px;
         font-size: 48px;
         line-height: 1.8;
         color: #DEDEDE;
@@ -100,7 +99,6 @@
         visibility: visible;
     }
     .button {
-        margin-top: 10%;
         display: inline-block;
         padding: 10px 20px;
         text-align: center;
@@ -108,6 +106,7 @@
         background-color: #007bff;
         color: white;
         border-radius: 5px;
+        margin-bottom: 40;
         margin-left: 25px;
         transition: background-color 0.3s ease;
     }

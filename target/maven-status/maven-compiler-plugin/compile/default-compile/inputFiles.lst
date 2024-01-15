@@ -4,6 +4,7 @@
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/model/entity/UserType.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/bean/AuditLogBean.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/utility/TrackNoGenerator.java
+/home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/action/Accept.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/model/entity/Bid.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/view/helper/HtmlCards.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/dao/GenericDao.java
@@ -69,6 +70,7 @@
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/model/entity/Contact.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/api/rest/ItemRestApi.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/bean/GenericBean.java
+/home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/action/RejectAction.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/action/admin/ItemAction.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/bean/TrackBeanI.java
 /home/nasinza/Desktop/resale-auction-system/src/main/java/com/resale/app/model/entity/view/NavBar.java

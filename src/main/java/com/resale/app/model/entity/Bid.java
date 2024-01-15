@@ -31,6 +31,7 @@ public class Bid extends BaseEntity {
     private User user;
 
     @Formula("user_id")
+    @JoinColumn(name = "user_id")
     private Long userId;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -38,6 +39,7 @@ public class Bid extends BaseEntity {
     private Item item;
 
     @Formula("item_id")
+    @HtmlTableColHeader(header = "Item ID")
     private Long itemId;
 
     @Override
