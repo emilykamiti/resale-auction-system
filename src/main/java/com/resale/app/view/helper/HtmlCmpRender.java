@@ -19,6 +19,29 @@ import java.util.Optional;
 
 public class HtmlCmpRender implements Serializable {
 
+    public static String searchForm() {
+        return "<style>" +
+                ".search-form {" +
+                "  margin-bottom: 20px;" +
+                "}" +
+                ".search-form input[type='text'] {" +
+                "  padding: 5px;" +
+                "  margin-right: 10px;" +
+                "}" +
+                ".search-form input[type='submit'] {" +
+                "  padding: 5px 10px;" +
+                "  background-color: #4CAF50;" +
+                "  border: none;" +
+                "  color: white;" +
+                "  cursor: pointer;" +
+                "}" +
+                "</style>" +
+                "<form class=\"search-form\" action=\"./bids\" method=\"get\">" +
+                "<input type=\"text\" name=\"itemId\" placeholder=\"Enter item id\">" +
+                "<input type=\"submit\" value=\"Search\">" +
+                "</form>";
+    }
+
     public static String table(List<?> dataList, Class<?> dataClass) {
 
         if (!dataClass.isAnnotationPresent(HtmlTable.class))
@@ -27,6 +50,7 @@ public class HtmlCmpRender implements Serializable {
         HtmlTable htmlTable = dataClass.getAnnotation(HtmlTable.class);
 
         StringBuilder trBuilder = new StringBuilder();
+        trBuilder.append(searchForm());
 
         if (dataClass.equals(Item.class)) {
             trBuilder.append("<a class=\"link-btn-add\" href=\"")
@@ -92,8 +116,6 @@ public class HtmlCmpRender implements Serializable {
                         trBuilder.append("<td>")
                                 .append("<button class=\"btn-accept\" onclick=\"sendAcceptEmail('"
                                         + bidUser.getEmail() + "')\">Accept</button>")
-                                .append("<button class=\"btn-reject\" onclick=\"sendRejectEmail('"
-                                        + bidUser.getEmail() + "')\">Reject</button>")
                                 .append("</td>");
                     } else {
                         trBuilder.append("");
@@ -176,29 +198,6 @@ public class HtmlCmpRender implements Serializable {
 
     private static String ifBlank(String target, String alternative) {
         return StringUtils.isBlank(target) ? alternative : StringUtils.trimToEmpty(target);
-    }
-
-    public static String clock() {
-        StringBuilder clockHTML = new StringBuilder("<div class='Clock'>");
-        clockHTML.append("<h1 id='clockDisplay'></h1>");
-        clockHTML.append("</div>");
-        clockHTML.append("<script>");
-        clockHTML.append("function updateClock() {");
-        clockHTML.append("var now = new Date();");
-        clockHTML.append("var hours = now.getHours();");
-        clockHTML.append("var minutes = now.getMinutes();");
-        clockHTML.append("var seconds = now.getSeconds();");
-        clockHTML.append("hours = hours < 10 ? '0' + hours : hours;");
-        clockHTML.append("minutes = minutes < 10 ? '0' + minutes : minutes;");
-        clockHTML.append("seconds = seconds < 10 ? '0' + seconds : seconds;");
-        clockHTML.append("var time = hours + ':' + minutes + ':' + seconds;");
-        clockHTML.append("document.getElementById('clockDisplay').textContent = time;");
-        clockHTML.append("}");
-        clockHTML.append("setInterval(updateClock, 1000);");
-        clockHTML.append("updateClock();");
-        clockHTML.append("</script>");
-
-        return clockHTML.toString();
     }
 
 }

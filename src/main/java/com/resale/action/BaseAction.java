@@ -85,19 +85,30 @@ public class BaseAction extends HttpServlet {
     }
 
     public void renderPage(HttpServletRequest request, HttpServletResponse response, int activeMenu, Class<?> entity,
-            List<?> entityList)
-            throws ServletException, IOException {
+    List<?> entityList)
+    throws ServletException, IOException {
 
-        request.setAttribute("activeMenu", activeMenu);
+request.setAttribute("activeMenu", activeMenu);
 
-        if (StringUtils.trimToEmpty(request.getParameter("action")).equals("add"))
-            request.setAttribute("content", HtmlCmpRender.form(entity));
-        else
-            request.setAttribute("content", HtmlCmpRender.table(entityList, entity));
+if (StringUtils.trimToEmpty(request.getParameter("action")).equals("add"))
+    request.setAttribute("content", HtmlCmpRender.form(entity));
+else {
+    // Check if there's a sorted list in the request attributes
+    List<?> sortedList = (List<?>) request.getAttribute("bids");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("./app/index.jsp");
-        dispatcher.forward(request, response);
+    if (sortedList != null && !sortedList.isEmpty()) {
+        // Render the sorted bid table
+        request.setAttribute("content", HtmlCmpRender.table(sortedList, entity));
+    } else {
+        // Render the regular table if no sorted list is present
+        request.setAttribute("content", HtmlCmpRender.table(entityList, entity));
     }
+}
+
+RequestDispatcher dispatcher = request.getRequestDispatcher("./app/index.jsp");
+dispatcher.forward(request, response);
+}
+
 
     public void renderAdmin(HttpServletRequest req, HttpServletResponse res, int activeMenu, Class<?> entity,
             List<?> entityList) throws ServletException, IOException {
@@ -119,6 +130,14 @@ public class BaseAction extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("./app/index.jsp");
         dispatcher.forward(request, response);
+    }
+
+    public void setSearchForm(HttpServletRequest request) {
+        String searchForm = "<form action=\"/search\" method=\"get\">" +
+                "<input type=\"text\" name=\"itemId\" placeholder=\"Enter item id\">" +
+                "<input type=\"submit\" value=\"Search\">" +
+                "</form>";
+        request.setAttribute("searchForm", searchForm);
     }
 
 }

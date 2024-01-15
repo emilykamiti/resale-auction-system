@@ -47,7 +47,7 @@
         <label for="bidAmount">Amount to bid</label>
         <input type="number" id="bidAmount" name="bidAmount" required><br>
     
-        <!-- Add a hidden field to store the ItemId -->
+ 
         <input type="hidden" name="itemId" value="<%= request.getParameter("id") %>">
     
         <button type="submit" name="bid">Make a bid</button>
