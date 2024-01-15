@@ -7,6 +7,7 @@ com/resale/action/BaseAction.class
 com/resale/action/LogOutAction.class
 com/resale/app/utility/CustomerTrackId.class
 com/resale/app/bean/TrackBeanI.class
+com/resale/action/RejectAction.class
 com/resale/app/model/entity/UserType.class
 com/resale/app/view/helper/HtmlMenuToolbar.class
 com/resale/app/view/helper/HtmlCards.class
@@ -66,6 +67,7 @@ com/resale/app/model/entity/view/NavigationLink.class
 com/resale/app/bean/TrackBean.class
 com/resale/app/bean/EmailBeanI.class
 com/resale/app/view/helper/MenuLinkStatus.class
+com/resale/action/Accept.class
 com/resale/app/utility/EnumConverter.class
 com/resale/action/BaseAction$1.class
 com/resale/action/AdminAction.class

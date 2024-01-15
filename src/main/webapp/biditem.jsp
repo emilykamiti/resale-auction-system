@@ -42,6 +42,7 @@
 <body>
 
 <div class="container">
+
     <h2 class="form-title">MAKE BID</h2>
     <form action="./bids" method="post">
         <label for="bidAmount">Amount to bid</label>
@@ -58,4 +59,9 @@
 </div>
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</head>
+</html>
+>>>>>>> 4131598ecc32c5e798f4153911e775fef3d6e20e

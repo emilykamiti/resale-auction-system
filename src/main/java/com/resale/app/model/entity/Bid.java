@@ -34,6 +34,7 @@ public class Bid extends BaseEntity {
     @JoinColumn(name = "user_id")
     private Long userId;
 
+<<<<<<< HEAD
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "item_id")
     private Item item;
@@ -50,6 +51,11 @@ public class Bid extends BaseEntity {
 
     public Bid(String bidNumber, LocalDateTime bidTime, BigDecimal bidAmount, User user, Long userId, Item item,
             Long itemId) {
+=======
+    private long Status; // ! to do later
+
+    public Bid(String bidNumber, LocalDateTime bidTime, BigDecimal bidAmount, User user, Long userId) {
+>>>>>>> 4131598ecc32c5e798f4153911e775fef3d6e20e
         this.bidNumber = bidNumber;
         this.bidTime = bidTime;
         this.bidAmount = bidAmount;

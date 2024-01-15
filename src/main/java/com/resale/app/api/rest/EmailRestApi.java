@@ -22,7 +22,7 @@ public class EmailRestApi {
     @Produces(MediaType.APPLICATION_JSON)
     public Response sendEmail(Email email) {
         try {
-            emailBean.sendEmail(email);
+            emailBean.sendEmail(email, null);
             return Response.ok("Email sent successfully").build();
         } catch (MessagingException e) {
             e.printStackTrace();

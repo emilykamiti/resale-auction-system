@@ -121,11 +121,38 @@ public class HtmlCmpRender implements Serializable {
                         trBuilder.append("");
                     }
                 }
+                trBuilder.append("</tr>");
             }
         }
 
-        return trBuilder.toString();
+        trBuilder.append("</table>");
+        trBuilder.append("<script>");
+        trBuilder.append("function sendAcceptEmail(email) {");
+        trBuilder.append("console.log('sendAcceptEmail called with email:', email);");
+        trBuilder.append("fetch('./email/accept', {");
+        trBuilder.append("method: 'POST',");
+        trBuilder.append("headers: { 'Content-Type': 'application/json' },");
+        trBuilder.append("body: JSON.stringify({ email: email })");
+        trBuilder.append("})");
+        trBuilder.append(".then(response => response.json())");
+        trBuilder.append(".then(data => console.log(data))");
+        trBuilder.append(".catch((error) => console.error('Error:', error));");
+        trBuilder.append("}");
 
+        trBuilder.append("function sendRejectEmail(email) {");
+        trBuilder.append("console.log('sendRejectEmail called with email:', email);");
+        trBuilder.append("fetch('./email/reject', {");
+        trBuilder.append("method: 'POST',");
+        trBuilder.append("headers: { 'Content-Type': 'application/json' },");
+        trBuilder.append("body: JSON.stringify({ email: email })");
+        trBuilder.append("})");
+        trBuilder.append(".then(response => response.json())");
+        trBuilder.append(".then(data => console.log(data))");
+        trBuilder.append(".catch((error) => console.error('Error:', error));");
+        trBuilder.append("}");
+        trBuilder.append("</script>");
+
+        return trBuilder.toString();
     }
 
     public static String form(Class<?> model) {
