@@ -1,6 +1,5 @@
 package com.resale.app.bean;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;

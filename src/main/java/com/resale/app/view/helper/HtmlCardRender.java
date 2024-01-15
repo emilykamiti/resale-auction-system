@@ -9,27 +9,27 @@ public class HtmlCardRender {
         if (models == null || models.isEmpty()) {
             return StringUtils.EMPTY;
         }
-
+    
         StringBuilder cardBuilder = new StringBuilder();
-
+    
         cardBuilder.append("<div class=\"card-container\">");
-
+    
         cardBuilder.append("<script>");
         cardBuilder.append("function redirectToBidForm(itemId) {");
         cardBuilder.append("  window.location.href = 'biditem.jsp?id=' + itemId;");
         cardBuilder.append("}");
         cardBuilder.append("</script>");
-
+    
         for (Object model : models) {
             Field[] fields = model.getClass().getDeclaredFields();
-
+    
             cardBuilder.append("<div class=\"card\">");
-
+    
             for (Field field : fields) {
                 if (!field.isAnnotationPresent(HtmlCards.class)) {
                     continue;
                 }
-
+    
                 HtmlCards annotation = field.getAnnotation(HtmlCards.class);
                 try {
                     field.setAccessible(true);
@@ -44,17 +44,17 @@ public class HtmlCardRender {
                     throw new RuntimeException(e);
                 }
             }
-
+    
             cardBuilder.append("<div class=\"card-buttons\">");
-            cardBuilder.append("<button class=\"bid-button\" onclick=\"redirectToBidForm('")
-                    .append(getFieldValue("id", model)).append("')\">Bid</button>");
+            cardBuilder.append("<button class=\"bid-button\" onclick=\"redirectToBidForm(")
+                    .append(getFieldValue("id", model)).append(")\">Bid</button>");
             cardBuilder.append("</div>");
-
+    
             cardBuilder.append("</div>");
         }
-
+    
         cardBuilder.append("</div>");
-
+    
         cardBuilder.append("<style>");
         cardBuilder.append(".card-container { display: flex; flex-wrap: wrap; justify-content: space-around; }");
         cardBuilder.append(
@@ -65,9 +65,10 @@ public class HtmlCardRender {
         cardBuilder.append(
                 ".bid-button { padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; }");
         cardBuilder.append("</style>");
-
+    
         return cardBuilder.toString();
     }
+    
 
     private static String getFieldValue(String fieldName, Object model) {
         Class<?> currentClass = model.getClass();

@@ -1,6 +1,7 @@
 com/resale/app/bean/BidBean.class
 com/resale/app/bean/ItemBeanI.class
 com/resale/app/utility/BidNo.class
+com/resale/action/admin/BidstatusAction.class
 com/resale/app/model/entity/Email.class
 com/resale/action/BaseAction.class
 com/resale/action/LogOutAction.class
@@ -17,7 +18,6 @@ com/resale/app/utility/BuildInfo.class
 com/resale/app/dao/GenericDaoI.class
 com/resale/app/model/entity/BidStatus.class
 com/resale/action/LandingAction.class
-com/resale/action/admin/BIdstatusAction.class
 com/resale/app/api/config/Rest.class
 com/resale/app/api/rest/BaseRestApi.class
 com/resale/app/bean/GenericBean.class
@@ -55,7 +55,6 @@ com/resale/app/model/entity/Payment.class
 com/resale/app/model/entity/AuditLog.class
 com/resale/app/bean/GenericBeanI.class
 com/resale/app/view/helper/HtmlCmpRender.class
-com/resale/action/admin/TypeAction.class
 com/resale/app/api/rest/ItemRestApi.class
 com/resale/app/bean/AuditLogBean.class
 com/resale/app/bean/PaymentBean.class

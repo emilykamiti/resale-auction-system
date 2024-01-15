@@ -21,8 +21,6 @@ public class ItemAction extends BaseAction {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // String searchItem = req.getParameter("searchItem");
-        // List<Item> items;
         renderPage(req, resp, 4, Item.class, itemBean.list(new Item()));
     }
 

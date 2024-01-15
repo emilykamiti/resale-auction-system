@@ -5,13 +5,19 @@ import com.resale.app.view.helper.HtmlFormField;
 import com.resale.app.view.helper.HtmlTable;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.resale.app.view.helper.HtmlCards;
 import com.resale.app.view.helper.HtmlTableColHeader;
 
@@ -19,6 +25,10 @@ import com.resale.app.view.helper.HtmlTableColHeader;
 @Table(name = "items")
 @HtmlTable(addUrl = "./item?action=add")
 @HtmlForm(label = "Item", url = "./item")
+@NamedQueries({
+        @NamedQuery(name = "findItemByItemId", query = "SELECT i FROM Item i WHERE i.id = :itemId"),
+})
+
 public class Item extends BaseEntity {
 
     @Column(name = "ItemName")
@@ -54,6 +64,16 @@ public class Item extends BaseEntity {
     @HtmlTableColHeader(header = "Duration")
     @HtmlFormField(label = "Duration", required = true)
     private String bidDuration;
+
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    private List<Bid> bids;
+
+    @Override
+    public String toString() {
+        return "Item [itemName=" + itemName + ", description=" + description + ", category=" + category
+                + ", estimateAmount=" + estimateAmount + ", image=" + image + ", bidDuration=" + bidDuration + ", bids="
+                + bids + "]";
+    }
 
     public Item() {
     }
@@ -116,4 +136,12 @@ public class Item extends BaseEntity {
         this.bidDuration = bidDuration;
     }
 
+    @JsonIgnore
+    public List<Bid> getBids() {
+        return bids;
+    }
+
+    public void setBids(List<Bid> bids) {
+        this.bids = bids;
+    }
 }

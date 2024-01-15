@@ -23,17 +23,18 @@ public class BidAction extends BaseAction {
         HttpSession session = req.getSession();
 
         renderPage(req, resp, 4, Bid.class, bidBean.list(new Bid()));
-
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String username = (String) session.getAttribute("username");
 
+        Long itemId = Long.parseLong(req.getParameter("itemId"));
+
         Bid bid = serializeForm(Bid.class, req.getParameterMap());
 
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + username);
-        bidBean.addOrUpdateBid(bid, username);
-        res.sendRedirect("./biditem.jsp");
+        bid = bidBean.addOrUpdateBid(bid, username, itemId);
+
+        res.sendRedirect("./biditem.jsp?id=" + itemId);
     }
 }

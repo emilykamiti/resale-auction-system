@@ -33,21 +33,31 @@ public class Bid extends BaseEntity {
     @Formula("user_id")
     private Long userId;
 
-    public Bid(String bidNumber, LocalDateTime bidTime, BigDecimal bidAmount, User user, Long userId) {
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "item_id")
+    private Item item;
+
+    @Formula("item_id")
+    private Long itemId;
+
+    @Override
+    public String toString() {
+        return "Bid [bidNumber=" + bidNumber + ", bidTime=" + bidTime + ", bidAmount=" + bidAmount + ", user=" + user
+                + ", userId=" + userId + ", item=" + item + ", itemId=" + itemId + "]";
+    }
+
+    public Bid(String bidNumber, LocalDateTime bidTime, BigDecimal bidAmount, User user, Long userId, Item item,
+            Long itemId) {
         this.bidNumber = bidNumber;
         this.bidTime = bidTime;
         this.bidAmount = bidAmount;
         this.user = user;
         this.userId = userId;
+        this.item = item;
+        this.itemId = itemId;
     }
 
     public Bid() {
-    }
-
-    @Override
-    public String toString() {
-        return "Bid [bidNumber=" + bidNumber + ", bidTime=" + bidTime + ", bidAmount=" + bidAmount + ", user=" + user
-                + "]";
     }
 
     public String getBidNumber() {
@@ -89,4 +99,21 @@ public class Bid extends BaseEntity {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
+
 }
